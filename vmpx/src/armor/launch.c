@@ -5,13 +5,7 @@
 #include "armor/parent.h"
 
 static int agent_path(wchar_t* out, size_t cap) {
-    if (!GetModuleFileNameW(NULL, out, (DWORD)cap)) return -1;
-    wchar_t* slash = wcsrchr(out, L'\\');
-    if (!slash) return -1;
-    slash[1] = 0;
-    if (wcslen(out) + wcslen(L"vmpxagent.dll") + 1 >= cap) return -1;
-    wcscat_s(out, cap, L"vmpxagent.dll");
-    return 0;
+    return agent_materialize(NULL, out, cap);
 }
 
 int launch_armored_ex(const wchar_t* exe, int armor, int wait_ms,

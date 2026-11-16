@@ -1,0 +1,30 @@
+#include <winver.h>
+
+/* The dynamic agent is embedded so a release is a single executable. The host
+ * extracts it to %TEMP% only when an injection actually needs a file path. */
+101 RCDATA "vmpxagent.dll"
+
+1 VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+FILEOS          0x40004L
+FILETYPE        0x1L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "vmpx"
+            VALUE "FileDescription", "vmpx - PE and live-process toolkit for protected binaries"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "vmpx"
+            VALUE "OriginalFilename", "vmpx.exe"
+            VALUE "ProductName", "vmpx"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 0x4B0
+    END
+END

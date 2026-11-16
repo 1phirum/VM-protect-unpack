@@ -45,9 +45,18 @@ int main(int argc, char** argv) {
     setvbuf(stderr, NULL, _IONBF, 0);
     if (argc < 2) { usage(); return 2; }
 
+    if (!strcmp(argv[1], "version") || !strcmp(argv[1], "--version") ||
+        !strcmp(argv[1], "-V")) {
+        printf("vmpx 1.0.0 (agent embedded, x86)\n");
+        return 0;
+    }
+
     for (size_t i = 0; i < sizeof(CMDS) / sizeof(CMDS[0]); i++) {
-        if (strcmp(argv[1], CMDS[i].name) == 0)
-            return CMDS[i].fn(argc, argv);
+        if (strcmp(argv[1], CMDS[i].name) == 0) {
+            int rc = CMDS[i].fn(argc, argv);
+            agent_release();
+            return rc;
+        }
     }
 
     printf("[-] unknown command: %s\n\n", argv[1]);

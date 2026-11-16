@@ -19,6 +19,7 @@
 #include <string.h>
 
 #include "unpack/result.h"
+#include "util/agent_embed.h"
 
 typedef struct {
     HANDLE          file;

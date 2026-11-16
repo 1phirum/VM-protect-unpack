@@ -397,17 +397,7 @@ static uint32_t parse_mode(const char* s) {
 }
 
 static int agent_dll_path(const char* override, wchar_t* out, size_t cap) {
-    if (override && *override) {
-        return MultiByteToWideChar(CP_UTF8, 0, override, -1, out, (int)cap)
-                   ? 0 : -1;
-    }
-    if (!GetModuleFileNameW(NULL, out, (DWORD)cap)) return -1;
-    wchar_t* slash = wcsrchr(out, L'\\');
-    if (!slash) return -1;
-    slash[1] = 0;
-    if (wcslen(out) + wcslen(L"vmpxagent.dll") + 1 >= cap) return -1;
-    wcscat_s(out, cap, L"vmpxagent.dll");
-    return 0;
+    return agent_materialize(override, out, cap);
 }
 
 static HANDLE wait_mapping(uint32_t pid, vmpx_dyn_ctl_t** out, int timeout_ms) {

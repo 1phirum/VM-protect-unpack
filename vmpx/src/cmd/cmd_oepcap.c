@@ -30,13 +30,7 @@ static int oepcap_fail(const char* reason, uint32_t pid, const char* mode) {
 }
 
 static int agent_path(wchar_t* out, size_t cap) {
-    if (!GetModuleFileNameW(NULL, out, (DWORD)cap)) return -1;
-    wchar_t* slash = wcsrchr(out, L'\\');
-    if (!slash) return -1;
-    slash[1] = 0;
-    if (wcslen(out) + wcslen(L"vmpxagent.dll") + 1 >= cap) return -1;
-    wcscat_s(out, cap, L"vmpxagent.dll");
-    return 0;
+    return agent_materialize(NULL, out, cap);
 }
 
 static int read_pe(const char* path, pehdr_t* h, uint8_t* buf, size_t cap) {
