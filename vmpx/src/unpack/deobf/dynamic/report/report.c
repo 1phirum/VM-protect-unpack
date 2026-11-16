@@ -1,7 +1,9 @@
 /* report.c - drive live collectors and write technique-separated artifacts */
 #include "vmpx.h"
 #include "unpack/deobf/dynamic/control/control.h"
+#include "unpack/deobf/dynamic/control/codec.h"
 #include "unpack/deobf/dynamic/report/report.h"
+#include "unpack/deobf/dynamic/report/loss_ledger.h"
 #include "unpack/deobf/dynamic/session/session_bridge.h"
 #include "unpack/deobf/dynamic/strings/runtime_strings.h"
 #include <windows.h>
@@ -25,9 +27,11 @@ typedef struct {
     uint32_t size;
     uint32_t len;
     uint32_t crc32;
+    uint32_t hash_algo;
     uint32_t flags;
     uint32_t event_type;
     uint32_t validity;
+    uint32_t page_epoch;
 } capture_rec_t;
 #pragma pack(pop)
 
@@ -48,7 +52,9 @@ typedef struct {
     uint64_t max_capture;
     uint32_t max_events;
     uint32_t events_seen;
-    uint32_t by_type[9];
+    uint32_t by_type[10];
+    uint32_t by_algo[3];
+    vmpx_loss_ledger_t ledge;
     uint32_t mem_records;
     uint32_t exec_records;
     uint32_t thread_records;
@@ -57,6 +63,7 @@ typedef struct {
     uint32_t read_fail;
     uint32_t shard_stalled[VMPX_DYN_MAX_PRODUCERS];
     uint32_t shard_invalid[VMPX_DYN_MAX_PRODUCERS];
+    uint32_t stall_noted_seq[VMPX_DYN_MAX_PRODUCERS];
     uint32_t last_ack[VMPX_DYN_MAX_PRODUCERS];
 } report_ctx_t;
 
@@ -96,6 +103,7 @@ static const char* ev_name(uint32_t type) {
     case VMPX_DYN_EV_MARK:    return "mark";
     case VMPX_DYN_EV_ERROR:   return "error";
     case VMPX_DYN_EV_VM:      return "vm";
+    case VMPX_DYN_EV_FREE:    return "free";
     default:                  return "event";
     }
 }
@@ -152,6 +160,8 @@ static void write_capture(report_ctx_t* c, const vmpx_dyn_event_t* e,
     rec.flags = e->flags;
     rec.event_type = e->type;
     rec.validity = validity;
+    rec.hash_algo = e->hash_algo;
+    rec.page_epoch = e->page_epoch;
     fwrite(&rec, sizeof(rec), 1, c->capture);
     fwrite(data, 1, len, c->capture);
     c->captured += len;
@@ -184,10 +194,11 @@ static void process_mem(report_ctx_t* c, const vmpx_dyn_event_t* e,
     if (c->pages) {
         fprintf(c->pages,
                 "seq=%llu addr=0x%llX size=0x%llX type=%s crc=0x%08X "
-                "flags=0x%X validity=%s\n",
+                "flags=0x%X validity=%s hash_algo=%u page_epoch=%u\n",
                 (unsigned long long)e->seq, (unsigned long long)e->addr,
                 (unsigned long long)e->size, mem_type(e->aux), e->crc32,
-                e->flags, validity_name(validity));
+                e->flags, validity_name(validity), e->hash_algo,
+                e->page_epoch);
     }
     write_capture(c, e, data, len, validity);
     dyn_string_origin_t origin = DYN_STRING_ORIGIN_UNKNOWN;
@@ -197,7 +208,8 @@ static void process_mem(report_ctx_t* c, const vmpx_dyn_event_t* e,
 }
 
 static void process_event(report_ctx_t* c, const vmpx_dyn_event_t* e) {
-    if (e->type < 9) c->by_type[e->type]++;
+    if (e->type < 10) c->by_type[e->type]++;
+    if (e->hash_algo < 3) c->by_algo[e->hash_algo]++;
     write_event_line(c, e);
 
     switch (e->type) {
@@ -259,6 +271,16 @@ static void process_event(report_ctx_t* c, const vmpx_dyn_event_t* e) {
         emit_bytes(c, e, e->data, e->len, "vm");
         break;
     }
+    case VMPX_DYN_EV_FREE:
+        c->mem_records++;
+        if (c->pages)
+            fprintf(c->pages,
+                    "seq=%llu addr=0x%llX size=0x%llX type=%s crc=0x%08X "
+                    "flags=0x%X validity=released hash_algo=%u page_epoch=%u\n",
+                    (unsigned long long)e->seq, (unsigned long long)e->addr,
+                    (unsigned long long)e->size, mem_type(e->aux), e->crc32,
+                    e->flags, e->hash_algo, e->page_epoch);
+        break;
     default:
         break;
     }
@@ -302,17 +324,40 @@ static uint32_t drain_ready(report_ctx_t* c, vmpx_dyn_ctl_t* ctl,
             uint32_t ready = slot->ready;
             if (ready != seq) {
                 c->shard_stalled[i]++;
+                /* One ledger record per distinct stalled sequence, not one
+                 * per drain pass: a producer that stays unpublished would
+                 * otherwise flood loss.jsonl at the poll rate. */
+                if (c->stall_noted_seq[i] != seq) {
+                    c->stall_noted_seq[i] = seq;
+                    (void)vmpx_loss_ledger_note(&c->ledge, VMPX_LOSS_STALL,
+                                                VMPX_LOSS_TYPE_UNKNOWN, 0,
+                                                c->loss, i, seq);
+                }
                 break;
             }
             MemoryBarrier();
             if (slot->epoch != ctl->epoch || slot->seq != seq ||
                 slot->producer != i) {
                 c->shard_invalid[i]++;
+                (void)vmpx_loss_ledger_note(&c->ledge, VMPX_LOSS_INVALID,
+                                            slot->type, slot->flags,
+                                            c->loss, i, seq);
                 tail++;
                 continue;
             }
-            memcpy(&batch[n].ev, (const void*)(uintptr_t)slot,
-                   sizeof(vmpx_dyn_event_t));
+            /* Decode through the explicit wire codec: a slot whose fields do
+             * not fit the declared layout is a typed rejection, not a
+             * reinterpreted struct. */
+            if (codec_decode_event((const uint8_t*)(const void*)slot,
+                                   (uint32_t)sizeof(vmpx_dyn_event_t),
+                                   &batch[n].ev) != CODEC_OK) {
+                c->shard_invalid[i]++;
+                (void)vmpx_loss_ledger_note(&c->ledge, VMPX_LOSS_INVALID,
+                                            slot->type, slot->flags,
+                                            c->loss, i, seq);
+                tail++;
+                continue;
+            }
             batch[n].shard = i;
             n++;
             tail++;
@@ -384,6 +429,54 @@ static HANDLE wait_mapping(uint32_t pid, vmpx_dyn_ctl_t** out, int timeout_ms) {
         Sleep(100);
     }
     return NULL;
+}
+
+/* Host-side bounded reset rendezvous. The host does not link the agent's
+ * control.c, so the ritual is mirrored here against the mapped control block:
+ * advance the epoch, then wait bounded for every registered owner to publish
+ * departure (`reset_ack == epoch`) or be observed drained (`head == tail`).
+ * Owners that settle neither way before the deadline are returned in
+ * `out_shard`/`out_tid` (up to `cap`) for the loss ledger; the caller then
+ * clears the shards with host_reset_clear. Neither call allocates. */
+static uint32_t host_reset_wait(vmpx_dyn_ctl_t* ctl, uint32_t timeout_ms,
+                                uint32_t* out_shard, uint32_t* out_tid,
+                                uint32_t cap) {
+    uint32_t epoch =
+        (uint32_t)InterlockedIncrement((volatile LONG*)&ctl->epoch);
+    DWORD start = GetTickCount();
+    if (!timeout_ms) timeout_ms = VMPX_DYN_RESET_WAIT_MS;
+
+    for (;;) {
+        uint32_t pending = 0;
+        for (uint32_t i = 0; i < VMPX_DYN_MAX_PRODUCERS; i++) {
+            vmpx_dyn_shard_t* s = &ctl->shards[i];
+            if (!s->owner_tid) continue;
+            if (s->reset_ack == epoch) continue;
+            if (s->head == s->tail) continue;
+            if (out_shard && out_tid && pending < cap) {
+                out_shard[pending] = i;
+                out_tid[pending] = s->owner_tid;
+            }
+            pending++;
+        }
+        if (!pending) return 0;
+        if ((uint32_t)(GetTickCount() - start) >= timeout_ms) return pending;
+        Sleep(5);
+    }
+}
+
+static void host_reset_clear(vmpx_dyn_ctl_t* ctl) {
+    for (uint32_t i = 0; i < VMPX_DYN_MAX_PRODUCERS; i++) {
+        vmpx_dyn_shard_t* s = &ctl->shards[i];
+        InterlockedExchange((volatile LONG*)&s->owner_tid, 0);
+        s->reset_ack = 0;
+        s->epoch = 0;
+        s->head = 0;
+        s->tail = 0;
+        s->dropped = 0;
+        s->committed = 0;
+    }
+    MemoryBarrier();
 }
 
 int dyn_report_run(int argc, char** argv) {
@@ -508,6 +601,7 @@ int dyn_report_run(int argc, char** argv) {
 
     report_ctx_t c;
     memset(&c, 0, sizeof(c));
+    vmpx_loss_ledger_init(&c.ledge);
     uint64_t max_mb = arg_has(argc, argv, "--max-mb")
                           ? arg_num(argc, argv, "--max-mb", 0)
                           : profile.host_budget_mib;
@@ -549,20 +643,20 @@ int dyn_report_run(int argc, char** argv) {
     if (c.capture) {
         capture_hdr_t h;
         h.magic = 0x42445856u; /* VXDB */
-        h.version = 2;
+        h.version = 3;
         h.page_size = VMPX_DYN_PAGE;
         h.reserved = 0;
         fwrite(&h, sizeof(h), 1, c.capture);
     }
     if (c.pages)
-        fputs("seq,addr,size,type,crc,flags,validity\n", c.pages);
+        fputs("seq,addr,size,type,crc,flags,validity,hash_algo,page_epoch\n",
+              c.pages);
     if (c.exec) fputs("seq,tid,eip,esp,flags\n", c.exec);
     if (c.thread) fputs("seq,tid,eip,esp,code0,code1,stack0,flags,aux\n", c.thread);
     if (c.vm) fputs("seq,tid,eip,esp,flags,transition,code0\n", c.vm);
     if (c.api) fputs("seq,type,addr,size,oldprot,newprot\n", c.api);
 
     ctl->active = 0;
-    Sleep(150);
     int keep = arg_has(argc, argv, "--all-events") ? 1 : 0;
     ctl->mode = parse_mode(arg_get(argc, argv, "--mode"));
     ctl->mem_interval_ms = (uint32_t)arg_num(argc, argv, "--mem-ms", 1000);
@@ -570,18 +664,24 @@ int dyn_report_run(int argc, char** argv) {
     if (ctl->mem_interval_ms < 100) ctl->mem_interval_ms = 100;
     if (ctl->thread_interval_ms < 5) ctl->thread_interval_ms = 5;
 
+    /* Bounded reset rendezvous replaces the fixed pause. Anything already
+     * published is drained first so a quiet owner is observed drained rather
+     * than mistaken for a stalled one; an owner that neither acknowledges the
+     * new epoch nor drains before the deadline is recorded, then cleared --
+     * never cleared silently. */
     if (!keep) {
-        for (uint32_t i = 0; i < VMPX_DYN_MAX_PRODUCERS; i++) {
-            vmpx_dyn_shard_t* s = &ctl->shards[i];
-            s->owner_tid = 0;
-            s->epoch = 0;
-            s->head = 0;
-            s->tail = 0;
-            s->dropped = 0;
-            s->committed = 0;
-        }
-        MemoryBarrier();
-        InterlockedIncrement((volatile LONG*)&ctl->epoch);
+        uint32_t unsettled_shard[VMPX_DYN_MAX_PRODUCERS];
+        uint32_t unsettled_tid[VMPX_DYN_MAX_PRODUCERS];
+        (void)drain_and_process(&c, ctl, batch);
+        uint32_t unsettled_n =
+            host_reset_wait(ctl, VMPX_DYN_RESET_WAIT_MS,
+                            unsettled_shard, unsettled_tid,
+                            VMPX_DYN_MAX_PRODUCERS);
+        for (uint32_t i = 0; i < unsettled_n; i++)
+            (void)vmpx_loss_ledger_note(&c.ledge, VMPX_LOSS_STALL,
+                                        VMPX_LOSS_TYPE_UNKNOWN, 0, c.loss,
+                                        unsettled_shard[i], 0);
+        host_reset_clear(ctl);
         ctl->dropped = 0;
         ctl->total = 0;
         ctl->producer_overflow = 0;
@@ -621,12 +721,20 @@ int dyn_report_run(int argc, char** argv) {
     /* Final drain: committed records that were published before the stop
      * flag still belong to the capture. Uncommitted slots are never read. */
     uint64_t drain_deadline = GetTickCount64() + 1000;
+    uint32_t empty_passes = 0;
     while (GetTickCount64() < drain_deadline &&
            c.events_seen < c.max_events) {
         uint32_t n = drain_and_process(&c, ctl, batch);
         if (!n) {
+            empty_passes++;
+            /* Bounded stall retirement: with the collectors stopped, a full
+             * drain pass that recovers nothing for 100 ms cannot recover
+             * anything later, so waiting out the deadline is waste. */
+            if (empty_passes >= 20) break;
             if (GetTickCount64() + 1 >= drain_deadline) break;
             Sleep(5);
+        } else {
+            empty_passes = 0;
         }
     }
 
@@ -667,12 +775,19 @@ int dyn_report_run(int argc, char** argv) {
                     i, s->owner_tid, s->head, s->tail, s->committed,
                     s->dropped, c.shard_stalled[i], c.shard_invalid[i]);
         }
-        fprintf(c.loss,
-                "{\"global\":1,\"total\":%u,\"events\":%u,\"dropped\":%u,"
-                "\"shard_dropped\":%u,\"overflow\":%u,\"reentrant\":%u,"
-                "\"stalled\":%u,\"invalid\":%u}\n",
-                ctl->total, c.events_seen, dropped, shard_dropped, overflow,
-                reentrant, stalled, invalid);
+        vmpx_loss_ledger_add(&c.ledge, VMPX_LOSS_DROP, VMPX_LOSS_TYPE_UNKNOWN,
+                             0, dropped);
+        vmpx_loss_transport_t lt;
+        memset(&lt, 0, sizeof(lt));
+        lt.total = ctl->total;
+        lt.events = c.events_seen;
+        lt.dropped = dropped;
+        lt.shard_dropped = shard_dropped;
+        lt.overflow = overflow;
+        lt.reentrant = reentrant;
+        lt.stalled = stalled;
+        lt.invalid = invalid;
+        vmpx_loss_ledger_global(c.loss, &c.ledge, &lt);
     }
 
     vmpx_session_refresh_modules(&dyn_sess.session);
@@ -748,8 +863,11 @@ int dyn_report_run(int argc, char** argv) {
                 thread_samples, c.thread_records);
         fprintf(sf, "vm_records=%u api_records=%u\n",
                 c.vm_records, c.api_records);
-        for (uint32_t i = 1; i < 9; i++)
+        for (uint32_t i = 1; i < 10; i++)
             fprintf(sf, "type_%s=%u\n", ev_name(i), c.by_type[i]);
+        fprintf(sf, "hash_algo fnv1a32=%u crc32=%u none=%u\n",
+                c.by_algo[VMPX_HASH_FNV1A32], c.by_algo[VMPX_HASH_CRC32],
+                c.by_algo[VMPX_HASH_NONE]);
         fclose(sf);
     }
 

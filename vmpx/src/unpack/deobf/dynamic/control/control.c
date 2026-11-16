@@ -167,6 +167,64 @@ void dyn_api_suppress(int on) {
     g_api_suppress = on;
 }
 
+/* True when a registered owner has settled for the current reset epoch: it has
+ * published departure (`reset_ack == epoch`) or the shard holds no reservation
+ * and nothing unread (`head == tail`). */
+static int dyn_shard_settled(const vmpx_dyn_shard_t* s, uint32_t epoch) {
+    if (!s->owner_tid) return 1;
+    if (s->reset_ack == epoch) return 1;
+    if (s->head == s->tail) return 1;
+    return 0;
+}
+
+uint32_t dyn_control_reset_wait(vmpx_dyn_ctl_t* ctl, uint32_t timeout_ms,
+                                uint32_t* out_shard, uint32_t* out_tid,
+                                uint32_t cap) {
+    if (!ctl) return 0;
+
+    uint32_t epoch =
+        (uint32_t)InterlockedIncrement((volatile LONG*)&ctl->epoch);
+    uint32_t start = (uint32_t)GetTickCount();
+    if (!timeout_ms) timeout_ms = VMPX_DYN_RESET_WAIT_MS;
+
+    for (;;) {
+        uint32_t pending = 0;
+        for (uint32_t i = 0; i < VMPX_DYN_MAX_PRODUCERS; i++) {
+            const vmpx_dyn_shard_t* s = &ctl->shards[i];
+            if (dyn_shard_settled(s, epoch)) continue;
+            if (out_shard && out_tid && pending < cap) {
+                out_shard[pending] = i;
+                out_tid[pending] = s->owner_tid;
+            }
+            pending++;
+        }
+        if (!pending) return 0;
+        if ((uint32_t)(GetTickCount() - start) >= timeout_ms) return pending;
+        Sleep(5);
+    }
+}
+
+void dyn_control_reset_clear(vmpx_dyn_ctl_t* ctl) {
+    if (!ctl) return;
+    for (uint32_t i = 0; i < VMPX_DYN_MAX_PRODUCERS; i++) {
+        vmpx_dyn_shard_t* s = &ctl->shards[i];
+        InterlockedExchange((volatile LONG*)&s->owner_tid, 0);
+        s->reset_ack = 0;
+        s->epoch = 0;
+        s->head = 0;
+        s->tail = 0;
+        s->dropped = 0;
+        s->committed = 0;
+    }
+    MemoryBarrier();
+}
+
+static void dyn_shard_ack_reset(vmpx_dyn_shard_t* s) {
+    if (!s || !g_ctl) return;
+    uint32_t epoch = g_ctl->epoch;
+    if (s->epoch != epoch) s->reset_ack = epoch;
+}
+
 static vmpx_dyn_shard_t* dyn_shard_acquire(void) {
     if (!g_ctl) return NULL;
 
@@ -175,12 +233,17 @@ static vmpx_dyn_shard_t* dyn_shard_acquire(void) {
     vmpx_dyn_shard_t* s = g_shard;
     if (s && s->owner_tid == tid && s->epoch == epoch) return s;
 
+    /* Leaving a shard from a superseded generation publishes departure before
+     * the slot is dropped, so a host reset rendezvous can observe the owner. */
+    if (s) dyn_shard_ack_reset(s);
+
     g_shard = NULL;
     for (uint32_t i = 0; i < VMPX_DYN_MAX_PRODUCERS; i++) {
         s = &g_ctl->shards[i];
         if (InterlockedCompareExchange((volatile LONG*)&s->owner_tid,
                                        (LONG)tid, 0) == 0) {
             s->epoch = epoch;
+            s->reset_ack = epoch;   /* fresh owner is current, nothing to wait on */
             g_shard = s;
             return s;
         }
@@ -205,9 +268,16 @@ static uint32_t dyn_shard_reserve(vmpx_dyn_shard_t* s) {
 
 void dyn_event_publish(uint32_t type, uint32_t flags, uint64_t addr,
                        uint64_t size, uint64_t eip, uint64_t esp,
-                       uint32_t crc32, const void* data, uint32_t len,
+                       uint32_t crc32, uint32_t hash_algo,
+                       uint32_t page_epoch, const void* data, uint32_t len,
                        uint32_t aux, uint32_t aux2) {
-    if (!g_ctl || !g_ctl->active) return;
+    if (!g_ctl) return;
+
+    /* Publish departure for a superseded generation before the active gate, so
+     * a reset in flight observes this owner even when it is idle and returns. */
+    dyn_shard_ack_reset(g_shard);
+
+    if (!g_ctl->active) return;
 
     uint32_t mode = g_ctl->mode;
     if ((type == VMPX_DYN_EV_WRITE || type == VMPX_DYN_EV_PROTECT) &&
@@ -221,9 +291,16 @@ void dyn_event_publish(uint32_t type, uint32_t flags, uint64_t addr,
     g_publishing = 1;
 
     vmpx_dyn_shard_t* s = dyn_shard_acquire();
+    /* Tag the slot with the epoch the reservation belongs to, captured before
+     * the reserve: a host reset landing mid-publish must leave this event
+     * stale (and rejected by the host), not re-labelled with the new epoch. */
+    uint32_t epoch = s ? s->epoch : 0;
     uint32_t seq = s ? dyn_shard_reserve(s) : 0;
     if (!s || !seq) {
-        if (s) InterlockedIncrement((volatile LONG*)&s->dropped);
+        if (s) {
+            InterlockedIncrement((volatile LONG*)&s->dropped);
+            dyn_shard_ack_reset(s);
+        }
         InterlockedIncrement((volatile LONG*)&g_ctl->dropped);
         g_publishing = 0;
         return;
@@ -232,7 +309,7 @@ void dyn_event_publish(uint32_t type, uint32_t flags, uint64_t addr,
     vmpx_dyn_event_t* ev =
         &s->events[seq & (uint32_t)(VMPX_DYN_SHARD_EVENTS - 1)];
     ev->ready = 0;
-    ev->epoch = s->epoch;
+    ev->epoch = epoch;
     ev->producer = (uint32_t)(s - &g_ctl->shards[0]);
     ev->tid = GetCurrentThreadId();
     ev->seq = seq;
@@ -243,8 +320,10 @@ void dyn_event_publish(uint32_t type, uint32_t flags, uint64_t addr,
     ev->eip = eip;
     ev->esp = esp;
     ev->crc32 = crc32;
+    ev->hash_algo = hash_algo;
     ev->aux = aux;
     ev->aux2 = aux2;
+    ev->page_epoch = page_epoch;
 
     LARGE_INTEGER qpc;
     QueryPerformanceCounter(&qpc);
@@ -265,16 +344,8 @@ void dyn_event_publish(uint32_t type, uint32_t flags, uint64_t addr,
     InterlockedIncrement((volatile LONG*)&g_ctl->total);
 
     if (!(seq & 63) && g_evt) SetEvent(g_evt);
+    dyn_shard_ack_reset(s);
     g_publishing = 0;
-}
-
-static uint32_t preview_hash(const uint8_t* p, uint32_t n) {
-    uint32_t h = 2166136261u;
-    for (uint32_t i = 0; i < n; i++) {
-        h ^= p[i];
-        h *= 16777619u;
-    }
-    return h;
 }
 
 void dyn_event_api(uint32_t type, uint64_t addr, uint64_t size,
@@ -287,16 +358,20 @@ void dyn_event_api(uint32_t type, uint64_t addr, uint64_t size,
     uint8_t preview[VMPX_DYN_DATA];
     uint32_t len = 0;
     uint32_t crc = 0;
+    uint32_t algo = VMPX_HASH_NONE;
     if (type == VMPX_DYN_EV_WRITE && addr && size) {
         uint32_t n = size > VMPX_DYN_DATA ? VMPX_DYN_DATA : (uint32_t)size;
         __try {
             memcpy(preview, (const void*)(uintptr_t)addr, n);
             len = n;
-            crc = preview_hash(preview, n);
+            crc = checksum_fnv1a32(preview, n);
+            algo = VMPX_HASH_FNV1A32;
         } __except (EXCEPTION_EXECUTE_HANDLER) {
             len = 0;
+            crc = 0;
+            algo = VMPX_HASH_NONE;
         }
     }
-    dyn_event_publish(type, 0, addr, size, 0, 0, crc, preview, len,
+    dyn_event_publish(type, 0, addr, size, 0, 0, crc, algo, 0, preview, len,
                       oldprot, newprot);
 }

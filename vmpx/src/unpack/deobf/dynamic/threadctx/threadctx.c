@@ -468,7 +468,8 @@ static void sample_thread(vmpx_dyn_ctl_t* ctl, DWORD tid) {
     }
 
     dyn_event_publish(VMPX_DYN_EV_THREAD, flags, ctx.Eip, 1,
-                      ctx.Eip, ctx.Esp, crc, data, TC_LEN,
+                      ctx.Eip, ctx.Esp, crc,
+                      crc ? VMPX_HASH_FNV1A32 : VMPX_HASH_NONE, 0, data, TC_LEN,
                       tid, code_n | (stack_n ? 0x10000u : 0));
 
     if (!park) ResumeThread(th);

@@ -494,6 +494,6 @@ int dyn_oep_arm(uint32_t oep_va) {
     }
 
     dyn_event_publish(VMPX_DYN_EV_MARK, 0, oep_va, 0, 0, 0, 0,
-                      "oep-armed", 10, 0, 0);
+                      VMPX_HASH_NONE, 0, "oep-armed", 10, 0, 0);
     return 1;
 }

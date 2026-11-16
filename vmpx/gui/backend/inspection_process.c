@@ -299,7 +299,8 @@ int vp_stop_watch(uint32_t pid, vp_error* e)
         CloseHandle(map);
         return fail(e, L"Cannot map watch control");
     }
-    if (ctl->magic != VMPX_WATCH_MAGIC || ctl->version != VMPX_WATCH_VERSION)
+    if (ctl->magic != VMPX_WATCH_MAGIC || ctl->version != VMPX_WATCH_VERSION ||
+        ctl->capacity != VMPX_WATCH_MAX_EVENTS)
     {
         UnmapViewOfFile(ctl);
         CloseHandle(map);

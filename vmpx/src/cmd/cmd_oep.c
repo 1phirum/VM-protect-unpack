@@ -124,11 +124,19 @@ static void sample_thread(HANDLE hp, uint32_t pid, DWORD tid,
 }
 
 /* Helper failures are mapped here, once, at the command boundary. A failed
- * resolution, injection or capture is never reported as ok. */
+ * resolution, injection or capture is never reported as ok, and the exit code
+ * names the class: a missing target or usage error is a validation failure, a
+ * target that is already gone is a process exit, everything else is a capture
+ * failure. */
 static int oep_fail(const char* reason, uint32_t pid) {
+    vmpx_run_status_t st = VMPX_RUN_CAPTURE_FAILED;
+    if (!strcmp(reason, "target") || !strcmp(reason, "usage"))
+        st = VMPX_RUN_INVALID_ARG;
+    else if (!strcmp(reason, "process-not-found"))
+        st = VMPX_RUN_PROCESS_EXITED;
     printf("STATUS oep failed status=%s pid=%u reason=%s\n",
-           vmpx_run_status_name(VMPX_RUN_CAPTURE_FAILED), pid, reason);
-    return vmpx_run_status_exit(VMPX_RUN_CAPTURE_FAILED);
+           vmpx_run_status_name(st), pid, reason);
+    return vmpx_run_status_exit(st);
 }
 
 int cmd_oep(int argc, char** argv) {

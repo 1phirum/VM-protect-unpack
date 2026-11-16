@@ -5,10 +5,17 @@
  * the report reader consumes the rings while the target is still executing.
  * No dump file, no on-disk section table, and no static scanner is involved.
  *
- * Protocol v2 uses one bounded SPSC shard per publishing thread. A producer
+ * Protocol v3 uses one bounded SPSC shard per publishing thread. A producer
  * reserves a slot, fills it privately, then release-publishes the slot
  * generation in `ready`. The host copies only slots whose generation matches
  * the expected sequence and acknowledges them through the shard tail.
+ *
+ * Reset is a bounded rendezvous, not a fixed pause. The host advances the
+ * control epoch, then waits for every registered `owner_tid` to either publish
+ * that it has left its shard (the shard's `reset_ack` carries the new epoch) or
+ * be observed drained (`head == tail`). Owners that neither acknowledge nor
+ * drain before the deadline are named in the loss ledger before the shard is
+ * cleared, never cleared silently.
  */
 #pragma once
 
@@ -17,8 +24,14 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#include "unpack/deobf/dynamic/control/checksum.h"
+
 #define VMPX_DYN_MAGIC   0x4E59444Bu   /* "KDYN" little-endian */
-#define VMPX_DYN_VERSION 2u
+/* v3 added the per-shard reset_ack; v4 adds `hash_algo`, the algorithm tag
+ * that names which digest produced `crc32`, and `page_epoch`, the memory-delta
+ * tick that produced the captured page bytes. Both are wire values; the
+ * assertions at the bottom of this header fail the build if they move. */
+#define VMPX_DYN_VERSION 4u
 #define VMPX_DYN_ENDIAN  0x01020304u
 
 #define VMPX_DYN_MAX_RANGES 16
@@ -28,6 +41,16 @@
 #define VMPX_DYN_DATA       192
 #define VMPX_DYN_PAGE       0x1000u
 #define VMPX_DYN_POINTER_WIDTH ((uint32_t)sizeof(void*))
+
+/* Size of the shard header prefix that precedes the event ring. The reset
+ * rendezvous fields (`owner_tid`, `epoch`, ..., `reset_ack`) live here; the
+ * ring starts at this offset and the compile-time assertion below holds it. */
+#define VMPX_DYN_SHARD_HEADER 32u
+
+/* Upper bound on the host reset rendezvous. The host waits at most this long
+ * for every registered owner to acknowledge or drain before it clears the
+ * shards. Expiry is recorded, never silent. */
+#define VMPX_DYN_RESET_WAIT_MS 500u
 
 /* collection modes */
 #define VMPX_DYN_MODE_MEM    1u
@@ -45,6 +68,7 @@
 #define VMPX_DYN_EV_MARK    6u
 #define VMPX_DYN_EV_ERROR   7u
 #define VMPX_DYN_EV_VM      8u
+#define VMPX_DYN_EV_FREE    9u
 
 /* event flags */
 #define VMPX_DYN_F_EXEC    1u
@@ -101,7 +125,8 @@ typedef struct {
     uint32_t type;
     uint32_t flags;
     uint32_t len;
-    uint32_t crc32;
+    uint32_t crc32;      /* digest over `data`; algorithm is hash_algo */
+    uint32_t hash_algo;  /* VMPX_HASH_* wire tag; 0 means no digest    */
     uint32_t aux;
     uint32_t aux2;
     uint64_t addr;
@@ -110,11 +135,15 @@ typedef struct {
     uint64_t esp;
     uint8_t  data[VMPX_DYN_DATA];
     uint32_t reserved;
+    uint32_t page_epoch; /* memory-delta identity epoch of captured page */
 } vmpx_dyn_event_t;
 
 /* One shard per publishing OS thread. `head` is the last reserved sequence,
  * `tail` is the last sequence acknowledged by the host, and `ready` lives in
- * each event slot. `owner_tid` is the registration token. */
+ * each event slot. `owner_tid` is the registration token. `reset_ack` is the
+ * control epoch this owner has published departure for: when it equals the
+ * current `ctl->epoch` the owner has left the shard and it is safe to clear.
+ * The field fills what was padding, so the ring stays at the same offset. */
 typedef struct {
     volatile uint32_t owner_tid;
     volatile uint32_t epoch;
@@ -122,6 +151,7 @@ typedef struct {
     volatile uint32_t tail;
     volatile uint32_t dropped;
     volatile uint32_t committed;
+    volatile uint32_t reset_ack;
     uint32_t reserved;
     vmpx_dyn_event_t events[VMPX_DYN_SHARD_EVENTS];
 } vmpx_dyn_shard_t;
@@ -174,9 +204,14 @@ typedef struct {
 /* Compile-time layout checks. These fail the build rather than allowing an
  * accidental struct change to become a silent wire-format change. */
 typedef char vmpx_dyn_assert_event_ready[(offsetof(vmpx_dyn_event_t, ready) == 0) ? 1 : -1];
-typedef char vmpx_dyn_assert_event_data[(offsetof(vmpx_dyn_event_t, data) == 88) ? 1 : -1];
-typedef char vmpx_dyn_assert_event_size[(sizeof(vmpx_dyn_event_t) == 288) ? 1 : -1];
-typedef char vmpx_dyn_assert_shard_events[(offsetof(vmpx_dyn_shard_t, events) == 32) ? 1 : -1];
+typedef char vmpx_dyn_assert_event_crc32[(offsetof(vmpx_dyn_event_t, crc32) == 44) ? 1 : -1];
+typedef char vmpx_dyn_assert_event_hash_algo[(offsetof(vmpx_dyn_event_t, hash_algo) == 48) ? 1 : -1];
+typedef char vmpx_dyn_assert_event_data[(offsetof(vmpx_dyn_event_t, data) == 96) ? 1 : -1];
+typedef char vmpx_dyn_assert_event_reserved[(offsetof(vmpx_dyn_event_t, reserved) == 288) ? 1 : -1];
+typedef char vmpx_dyn_assert_event_page_epoch[(offsetof(vmpx_dyn_event_t, page_epoch) == 292) ? 1 : -1];
+typedef char vmpx_dyn_assert_event_size[(sizeof(vmpx_dyn_event_t) == 296) ? 1 : -1];
+typedef char vmpx_dyn_assert_shard_reset_ack[(offsetof(vmpx_dyn_shard_t, reset_ack) == 24) ? 1 : -1];
+typedef char vmpx_dyn_assert_shard_events[(offsetof(vmpx_dyn_shard_t, events) == VMPX_DYN_SHARD_HEADER) ? 1 : -1];
 
 int  dyn_control_init(HMODULE self);
 void dyn_control_stop(void);
@@ -187,9 +222,23 @@ int  dyn_control_stopping(void);
 int  dyn_control_hidden(uint64_t addr, uint64_t len);
 void dyn_api_suppress(int on);
 
+/* Host reset rendezvous. `dyn_control_reset_wait` advances the control epoch
+ * to request departure, then waits bounded for every registered shard owner to
+ * acknowledge (`reset_ack == new epoch`) or be observed drained
+ * (`head == tail`). It writes the shard index and owner tid of each owner that
+ * neither acknowledged nor drained into `out_shard`/`out_tid` (up to `cap`)
+ * and returns that count; zero means every owner settled. The caller records
+ * the returned owners in the loss ledger, then calls
+ * `dyn_control_reset_clear` to zero every shard. Neither call allocates. */
+uint32_t dyn_control_reset_wait(vmpx_dyn_ctl_t* ctl, uint32_t timeout_ms,
+                                uint32_t* out_shard, uint32_t* out_tid,
+                                uint32_t cap);
+void dyn_control_reset_clear(vmpx_dyn_ctl_t* ctl);
+
 void dyn_event_publish(uint32_t type, uint32_t flags, uint64_t addr,
                        uint64_t size, uint64_t eip, uint64_t esp,
-                       uint32_t crc32, const void* data, uint32_t len,
+                       uint32_t crc32, uint32_t hash_algo,
+                       uint32_t page_epoch, const void* data, uint32_t len,
                        uint32_t aux, uint32_t aux2);
 void dyn_event_api(uint32_t type, uint64_t addr, uint64_t size,
                    uint32_t oldprot, uint32_t newprot);

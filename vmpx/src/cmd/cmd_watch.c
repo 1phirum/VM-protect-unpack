@@ -45,28 +45,29 @@ static void publish_tail(vmpx_watch_ctl_t* ctl, uint32_t epoch, uint32_t tail) {
 
 int cmd_watch(int argc, char** argv) {
     uint32_t pid = 0;
-    if (resolve_pid(argc, argv, &pid) != 0) return 1;
+    if (resolve_pid(argc, argv, &pid) != 0)
+        return vmpx_run_status_exit(VMPX_RUN_INVALID_ARG);
 
     wchar_t map_name[128];
     swprintf_s(map_name, 128, L"Local\\VMPX_WATCH_%u", pid);
     HANDLE map = OpenFileMappingW(FILE_MAP_ALL_ACCESS, FALSE, map_name);
     if (!map) {
         printf("[-] watch: no agent mapping for pid %u; inject vmpxagent.dll first\n", pid);
-        return 1;
+        return vmpx_run_status_exit(VMPX_RUN_CAPTURE_FAILED);
     }
     vmpx_watch_ctl_t* ctl = (vmpx_watch_ctl_t*)MapViewOfFile(
         map, FILE_MAP_ALL_ACCESS, 0, 0, VMPX_WATCH_MAP_SIZE);
     if (!ctl) {
         CloseHandle(map);
         printf("[-] watch: MapViewOfFile failed (%lu)\n", GetLastError());
-        return 1;
+        return vmpx_run_status_exit(VMPX_RUN_CAPTURE_FAILED);
     }
     if (ctl->magic != VMPX_WATCH_MAGIC || ctl->version != VMPX_WATCH_VERSION ||
         ctl->capacity != VMPX_WATCH_MAX_EVENTS) {
         UnmapViewOfFile(ctl);
         CloseHandle(map);
         printf("[-] watch: agent watch block version or ring size mismatch\n");
-        return 1;
+        return vmpx_run_status_exit(VMPX_RUN_UNSUPPORTED);
     }
     vmpx_watch_event_t* events =
         (vmpx_watch_event_t*)((uint8_t*)ctl + sizeof(vmpx_watch_ctl_t));

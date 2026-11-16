@@ -18,10 +18,30 @@ typedef struct {
     volatile LONG armed;
 } cov_page_t;
 
+/* A data access through a guarded page traps once, but the kernel has already
+ * cleared PAGE_GUARD for that access, so re-guarding before the retry would
+ * fault again and spin. Instead the faulting thread is single-stepped once:
+ * the page is restored now, the retry runs unguarded, and the single-step trap
+ * re-arms the guard afterwards. One slot per faulting thread, fixed cap. */
+#define COV_MAX_PENDING 64u
+
+typedef struct {
+    volatile LONG used;
+    volatile DWORD tid;
+    volatile uint32_t page;
+} cov_pending_t;
+
 static cov_page_t g_cov[COV_MAX_PAGES];
 static uint32_t g_cov_n = 0;
 static PVOID g_veh = NULL;
 static HANDLE g_thread = NULL;
+static cov_pending_t g_pending[COV_MAX_PENDING];
+
+/* Local accounting for data accesses. The shared control block carries no
+ * field for these; the control.h patch in the task report exposes them. */
+static volatile LONG g_data_faults = 0;
+static volatile LONG g_data_rearms = 0;
+static volatile LONG g_data_fallbacks = 0;
 
 static int executable(DWORD prot) {
     DWORD p = prot & 0xFF;
@@ -133,8 +153,74 @@ static void cov_disarm_all(void) {
     dyn_api_suppress(0);
 }
 
+/* Pending re-arms, keyed by the faulting thread. The thread that receives the
+ * trap flag is the only one that can match its own tid, so no other thread's
+ * flag is ever cleared. */
+static int pending_find(DWORD tid) {
+    for (uint32_t i = 0; i < COV_MAX_PENDING; i++)
+        if (g_pending[i].used && g_pending[i].tid == tid) return (int)i;
+    return -1;
+}
+
+static int pending_claim(DWORD tid, uint32_t page) {
+    for (uint32_t i = 0; i < COV_MAX_PENDING; i++) {
+        if (InterlockedCompareExchange(&g_pending[i].used, 1, 0) == 0) {
+            g_pending[i].tid = tid;
+            g_pending[i].page = page;
+            return (int)i;
+        }
+    }
+    return -1;
+}
+
+static void pending_release(int i) {
+    if (i >= 0) InterlockedExchange(&g_pending[i].used, 0);
+}
+
+/* Restore a page to its original protection and mark it unarmed. The kernel
+ * cleared PAGE_GUARD on the faulting access, so this cannot fault again. */
+static void cov_page_disarm(uint32_t idx) {
+    if (InterlockedExchange(&g_cov[idx].armed, 0) == 1) {
+        DWORD old = 0;
+        dyn_api_suppress(1);
+        VirtualProtect((LPVOID)(uintptr_t)g_cov[idx].page, VMPX_DYN_PAGE,
+                       g_cov[idx].protect, &old);
+        dyn_api_suppress(0);
+    }
+}
+
+/* STATUS_SINGLE_STEP for a thread we set the trap flag on. The retried data
+ * access has retired; re-arm the guard and drop the trap flag. */
+static LONG cov_veh_step(EXCEPTION_POINTERS* ep) {
+    DWORD tid = GetCurrentThreadId();
+    int pi = pending_find(tid);
+    if (pi < 0) return EXCEPTION_CONTINUE_SEARCH;
+
+    uint32_t page = g_pending[pi].page;
+    pending_release(pi);
+
+    /* Reached only on the thread that received our trap flag. */
+    ep->ContextRecord->EFlags &= ~0x100u;
+
+    int idx = cov_find(page);
+    if (idx >= 0 && InterlockedCompareExchange(&g_cov[idx].armed, 1, 1) == 1) {
+        DWORD old = 0;
+        dyn_api_suppress(1);
+        DWORD guard = (g_cov[idx].protect & 0xFF) | PAGE_GUARD;
+        if (VirtualProtect((LPVOID)(uintptr_t)page, VMPX_DYN_PAGE, guard, &old)) {
+            InterlockedIncrement(&g_data_rearms);
+        } else {
+            InterlockedExchange(&g_cov[idx].armed, 0);
+        }
+        dyn_api_suppress(0);
+    }
+    return EXCEPTION_CONTINUE_EXECUTION;
+}
+
 static LONG CALLBACK cov_veh(EXCEPTION_POINTERS* ep) {
     if (!ep || !ep->ExceptionRecord || !ep->ContextRecord) return EXCEPTION_CONTINUE_SEARCH;
+    if (ep->ExceptionRecord->ExceptionCode == STATUS_SINGLE_STEP)
+        return cov_veh_step(ep);
     if (ep->ExceptionRecord->ExceptionCode != STATUS_GUARD_PAGE_VIOLATION)
         return EXCEPTION_CONTINUE_SEARCH;
 
@@ -146,17 +232,37 @@ static LONG CALLBACK cov_veh(EXCEPTION_POINTERS* ep) {
 
     /* A read or write through a guarded code page is not an instruction
      * fetch. The kernel clears PAGE_GUARD on the faulting page before the
-     * instruction retries, so re-arming here would fault again on the retry
-     * and loop forever. Drop this pass's coverage on the page instead; the
-     * next arm cycle picks it up again. */
+     * retried access, so re-arming from here would fault again on the retry
+     * and loop forever. Restore the page now, set the trap flag in the
+     * faulting context, and re-arm from the resulting single-step. If a
+     * pending slot is unavailable, or this thread already carries one, fall
+     * back to the previous behaviour: drop the page for this run and count
+     * it. */
     if (access != 8) {
-        if (InterlockedExchange(&g_cov[idx].armed, 0) == 1) {
-            DWORD old = 0;
-            dyn_api_suppress(1);
-            VirtualProtect((LPVOID)(uintptr_t)page, VMPX_DYN_PAGE,
-                           g_cov[idx].protect, &old);
-            dyn_api_suppress(0);
+        if (InterlockedCompareExchange(&g_cov[idx].armed, 1, 1) != 1)
+            return EXCEPTION_CONTINUE_EXECUTION;
+
+        InterlockedIncrement(&g_data_faults);
+        DWORD tid = GetCurrentThreadId();
+
+        if (pending_find(tid) < 0) {
+            int pi = pending_claim(tid, page);
+            if (pi >= 0) {
+                DWORD old = 0;
+                dyn_api_suppress(1);
+                BOOL ok = VirtualProtect((LPVOID)(uintptr_t)page, VMPX_DYN_PAGE,
+                                         g_cov[idx].protect, &old);
+                dyn_api_suppress(0);
+                if (ok) {
+                    ep->ContextRecord->EFlags |= 0x100u;
+                    return EXCEPTION_CONTINUE_EXECUTION;
+                }
+                pending_release(pi);
+            }
         }
+
+        InterlockedIncrement(&g_data_fallbacks);
+        cov_page_disarm(idx);
         return EXCEPTION_CONTINUE_EXECUTION;
     }
 
@@ -179,7 +285,8 @@ static LONG CALLBACK cov_veh(EXCEPTION_POINTERS* ep) {
     if (g_cov[idx].type == MEM_PRIVATE) flags |= VMPX_DYN_F_PRIVATE;
 
     dyn_event_publish(VMPX_DYN_EV_EXEC, flags, eip, 1, eip,
-                      (uint64_t)ep->ContextRecord->Esp, crc, preview, n,
+                      (uint64_t)ep->ContextRecord->Esp, crc,
+                      n ? VMPX_HASH_FNV1A32 : VMPX_HASH_NONE, 0, preview, n,
                       page, 0);
 
     DWORD old = 0;

@@ -60,7 +60,8 @@ void vmtrans_track(uint32_t tid, uint32_t eip, uint32_t esp,
     if (img) flags |= VMPX_DYN_F_VM_IMAGE;
 
     dyn_event_publish(VMPX_DYN_EV_VM, flags, eip, 1, eip, esp, 0,
-                      data, len, tid, ((uint32_t)st->last_private << 8) | priv);
+                      VMPX_HASH_NONE, 0, data, len, tid,
+                      ((uint32_t)st->last_private << 8) | priv);
 
     st->last_eip = eip;
     st->last_private = priv;

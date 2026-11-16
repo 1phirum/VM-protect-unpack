@@ -40,6 +40,8 @@ cl /nologo /std:c11 /W4 /O2 /I include /I src /Fe:vmpx.exe ^
     src\unpack\snapshot\restore_modules.c src\unpack\snapshot\restore_context.c ^
     src\unpack\snapshot\restore_tls.c src\unpack\snapshot\debug.c ^
     src\unpack\deobf\dynamic\report\report.c ^
+    src\unpack\deobf\dynamic\control\codec.c ^
+    src\unpack\deobf\dynamic\report\loss_ledger.c ^
     src\unpack\deobf\dynamic\strings\runtime_strings.c ^
     src\unpack\deobf\dynamic\profile\profile.c ^
     src\unpack\deobf\dynamic\session\session.c ^
@@ -61,6 +63,7 @@ cl /nologo /std:c11 /W4 /O2 /MT /LD /I include /I src /Fe:vmpxagent.dll ^
     src\armor\stealth\hook.c src\armor\stealth\install.c ^
     src\unpack\hook\watch.c ^
     src\unpack\deobf\dynamic\control\control.c ^
+    src\unpack\deobf\dynamic\control\checksum.c ^
     src\unpack\deobf\dynamic\oep\oep.c ^
     src\unpack\deobf\dynamic\memdelta\memdelta.c ^
     src\unpack\deobf\dynamic\codecov\codecov.c ^

@@ -10,12 +10,23 @@
 #include <tlhelp32.h>
 
 /* Helper failures are mapped here, once, at the command boundary. A failed
- * resolution, injection or capture is never reported as ok. */
+ * resolution, injection or capture is never reported as ok, and the exit code
+ * names the class: a missing target is validation, no OEP candidate is
+ * unsupported, a target that is already gone is a process exit, everything
+ * else is a capture failure. */
 static int oepcap_fail(const char* reason, uint32_t pid, const char* mode) {
+    vmpx_run_status_t st = VMPX_RUN_CAPTURE_FAILED;
+    if (!strcmp(reason, "target") || !strcmp(reason, "target-path") ||
+        !strcmp(reason, "usage"))
+        st = VMPX_RUN_INVALID_ARG;
+    else if (!strcmp(reason, "no-oep"))
+        st = VMPX_RUN_UNSUPPORTED;
+    else if (!strcmp(reason, "process-not-found"))
+        st = VMPX_RUN_PROCESS_EXITED;
     printf("STATUS oepcap failed status=%s pid=%u mode=%s reason=%s\n",
-           vmpx_run_status_name(VMPX_RUN_CAPTURE_FAILED), pid,
+           vmpx_run_status_name(st), pid,
            mode ? mode : "-", reason);
-    return vmpx_run_status_exit(VMPX_RUN_CAPTURE_FAILED);
+    return vmpx_run_status_exit(st);
 }
 
 static int agent_path(wchar_t* out, size_t cap) {

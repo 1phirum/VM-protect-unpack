@@ -11,6 +11,7 @@
 
 #define DYN_MAX_RANGES 4096
 #define DYN_MAX_PAGES  262144u       /* 1 GiB / 4 KiB */
+#define DYN_EMIT_CAP   512u          /* page events published per tick */
 
 typedef struct {
     uint64_t base;
@@ -23,8 +24,19 @@ typedef struct {
     uint64_t addr;
     uint64_t hash;
     uint32_t crc;
-    uint32_t spare;
+    uint32_t spare;   /* MEM_IMAGE | MEM_MAPPED | MEM_PRIVATE */
+    uint32_t protect; /* protection observed when this page was hashed */
+    uint32_t epoch;   /* identity epoch of (hash, crc, protect); never 0 */
 } dyn_page_t;
+
+/* Per-page change classification for one tick. */
+enum {
+    DYN_KIND_UNCHANGED = 0,
+    DYN_KIND_NEW,      /* allocation/commit: page absent last tick */
+    DYN_KIND_WRITE,    /* in-place content change */
+    DYN_KIND_PROTECT,  /* protection change, content equal or unreadable */
+    DYN_KIND_FREE      /* released / decommitted */
+};
 
 static dyn_range_t g_ranges[DYN_MAX_RANGES];
 static dyn_page_t* g_prev = NULL;
@@ -32,6 +44,15 @@ static dyn_page_t* g_cur = NULL;
 static uint32_t g_prev_n = 0;
 static uint32_t g_have_prev = 0;
 static HANDLE g_thread = NULL;
+static uint32_t g_epoch_next = 0;
+
+/* Monotonic, never-zero page identity epoch. Advances when a page's identity
+ * tuple (hash, crc, protection) changes, when it first appears, or when it is
+ * released; unchanged pages keep the epoch they were first observed with. */
+static uint32_t next_epoch(void) {
+    uint32_t e = ++g_epoch_next;
+    return e ? e : ++g_epoch_next;
+}
 
 static int readable(DWORD prot) {
     DWORD p = prot & 0xFF;
@@ -145,15 +166,16 @@ static int page_cmp(const void* a, const void* b) {
     return 0;
 }
 
-static int find_prev(uint64_t addr, uint32_t n, dyn_page_t* page) {
+static int find_page(const dyn_page_t* arr, uint32_t n, uint64_t addr,
+                     dyn_page_t* page) {
     uint32_t lo = 0, hi = n;
     while (lo < hi) {
         uint32_t mid = lo + (hi - lo) / 2;
-        if (g_prev[mid].addr < addr) lo = mid + 1;
+        if (arr[mid].addr < addr) lo = mid + 1;
         else hi = mid;
     }
-    if (lo < n && g_prev[lo].addr == addr) {
-        *page = g_prev[lo];
+    if (lo < n && arr[lo].addr == addr) {
+        if (page) *page = arr[lo];
         return 1;
     }
     return 0;
@@ -170,10 +192,22 @@ static uint32_t build_cur(vmpx_dyn_ctl_t* ctl) {
             uint64_t h = 0;
             uint32_t c = 0;
             if (hash_page(addr, &h, &c) == 0) {
+                DWORD prot = g_ranges[r].protect;
+                dyn_page_t old;
+                uint32_t epoch;
+                if (g_have_prev && find_page(g_prev, g_prev_n, addr, &old) &&
+                    old.hash == h && old.crc == c && old.protect == prot &&
+                    old.epoch) {
+                    epoch = old.epoch;      /* identity unchanged */
+                } else {
+                    epoch = next_epoch();   /* new or changed */
+                }
                 g_cur[n].addr = addr;
                 g_cur[n].hash = h;
                 g_cur[n].crc = c;
                 g_cur[n].spare = g_ranges[r].type;
+                g_cur[n].protect = prot;
+                g_cur[n].epoch = epoch;
                 n++;
             } else {
                 ctl->mem_errors++;
@@ -183,6 +217,73 @@ static uint32_t build_cur(vmpx_dyn_ctl_t* ctl) {
     }
     qsort(g_cur, n, sizeof(g_cur[0]), page_cmp);
     return n;
+}
+
+/* Publish one classified page change. `page` is the page's current record,
+ * or its last record for a release. The distinct type is used where the host
+ * can receive it; where control.c suppresses EV_WRITE/EV_PROTECT outside API
+ * mode, the legacy generic EV_MEM event is published instead so coverage is
+ * unchanged. Work is capped at DYN_EMIT_CAP per tick; overflow is counted as
+ * deferred and surfaced through VMPX_DYN_F_MEM_TRUNC. */
+static void emit_change(vmpx_dyn_ctl_t* ctl, uint32_t kind,
+                        const dyn_page_t* page, uint32_t oldprot,
+                        uint32_t* emitted, uint32_t* deferred) {
+    if (*emitted >= DYN_EMIT_CAP) {
+        (*deferred)++;
+        return;
+    }
+
+    uint32_t type = page->spare;
+    uint32_t flags = VMPX_DYN_F_CHANGED;
+    if (type == MEM_IMAGE) flags |= VMPX_DYN_F_IMAGE;
+    if (type == MEM_PRIVATE) flags |= VMPX_DYN_F_PRIVATE;
+
+    uint8_t preview[VMPX_DYN_DATA];
+    uint32_t plen = 0;
+    uint32_t etype = VMPX_DYN_EV_MEM;
+    uint32_t aux = type;
+    uint32_t aux2 = 0;
+    int have_api = (ctl->mode & VMPX_DYN_MODE_API) != 0;
+
+    switch (kind) {
+    case DYN_KIND_NEW:
+        flags |= VMPX_DYN_F_NEW;
+        plen = copy_preview(page->addr, preview, VMPX_DYN_DATA);
+        break;
+
+    case DYN_KIND_WRITE:
+        if (have_api) etype = VMPX_DYN_EV_WRITE;
+        plen = copy_preview(page->addr, preview, VMPX_DYN_DATA);
+        break;
+
+    case DYN_KIND_PROTECT:
+        if (have_api) {
+            etype = VMPX_DYN_EV_PROTECT;
+            aux = oldprot;
+            aux2 = page->protect;
+        } else {
+            plen = copy_preview(page->addr, preview, VMPX_DYN_DATA);
+        }
+        break;
+
+    case DYN_KIND_FREE:
+        etype = VMPX_DYN_EV_FREE;
+        aux2 = oldprot;
+        break;
+
+    default:
+        return;
+    }
+
+    if (plen > VMPX_DYN_DATA) {
+        plen = VMPX_DYN_DATA;
+        flags |= VMPX_DYN_F_TRUNC;
+    }
+
+    dyn_event_publish(etype, flags, page->addr, VMPX_DYN_PAGE, 0, 0,
+                      page->crc, VMPX_HASH_FNV1A32, page->epoch,
+                      plen ? preview : NULL, plen, aux, aux2);
+    (*emitted)++;
 }
 
 static void poll_delta(vmpx_dyn_ctl_t* ctl) {
@@ -199,31 +300,58 @@ static void poll_delta(vmpx_dyn_ctl_t* ctl) {
     }
 
     uint32_t emitted = 0;
+    uint32_t deferred = 0;
+
+    /* Pass 1: pages committed and readable now - new, written, protection
+     * change, or unchanged-hash skip. */
     for (uint32_t i = 0; i < n; i++) {
         dyn_page_t old;
-        int found = find_prev(g_cur[i].addr, g_prev_n, &old);
-        if (found && old.hash == g_cur[i].hash && old.crc == g_cur[i].crc)
-            continue;
-
-        ctl->mem_changed++;
-        if (emitted < 512) {
-            uint8_t preview[VMPX_DYN_DATA];
-            uint32_t len = copy_preview(g_cur[i].addr, preview,
-                                        VMPX_DYN_DATA);
-            uint32_t flags = VMPX_DYN_F_CHANGED;
-            if (!found) flags |= VMPX_DYN_F_NEW;
-            if (g_cur[i].spare == MEM_IMAGE) flags |= VMPX_DYN_F_IMAGE;
-            if (g_cur[i].spare == MEM_PRIVATE) flags |= VMPX_DYN_F_PRIVATE;
-            if (len > VMPX_DYN_DATA) {
-                len = VMPX_DYN_DATA;
-                flags |= VMPX_DYN_F_TRUNC;
-            }
-            dyn_event_publish(VMPX_DYN_EV_MEM, flags, g_cur[i].addr,
-                              VMPX_DYN_PAGE, 0, 0, g_cur[i].crc,
-                              preview, len, g_cur[i].spare, 0);
-            emitted++;
+        int found = find_page(g_prev, g_prev_n, g_cur[i].addr, &old);
+        uint32_t kind;
+        if (!found) {
+            kind = DYN_KIND_NEW;
+        } else if (old.hash != g_cur[i].hash || old.crc != g_cur[i].crc) {
+            kind = DYN_KIND_WRITE;
+        } else if (old.protect != g_cur[i].protect) {
+            kind = DYN_KIND_PROTECT;
+        } else {
+            continue;                    /* unchanged-hash skip */
         }
+        ctl->mem_changed++;
+        emit_change(ctl, kind, &g_cur[i], found ? old.protect : 0,
+                    &emitted, &deferred);
     }
+
+    /* Pass 2: pages readable last tick but absent now. A live query separates
+     * release from a protection change that removed read access. A page that
+     * is readable again is a collection race, and the failed query is
+     * unreadable: both keep the legacy silence. */
+    for (uint32_t j = 0; j < g_prev_n; j++) {
+        if (find_page(g_cur, n, g_prev[j].addr, NULL))
+            continue;
+        MEMORY_BASIC_INFORMATION mbi;
+        uint32_t kind = DYN_KIND_UNCHANGED;
+        uint32_t oldprot = g_prev[j].protect;
+        dyn_page_t now = g_prev[j];
+        if (VirtualQuery((LPCVOID)(uintptr_t)g_prev[j].addr, &mbi,
+                         sizeof(mbi))) {
+            if (mbi.State == MEM_FREE || mbi.State == MEM_RESERVE) {
+                kind = DYN_KIND_FREE;
+            } else if (mbi.State == MEM_COMMIT &&
+                       ((mbi.Protect & PAGE_GUARD) || !readable(mbi.Protect))) {
+                kind = DYN_KIND_PROTECT;
+                now.protect = mbi.Protect;
+            }
+        }
+        if (kind == DYN_KIND_UNCHANGED)
+            continue;
+        now.epoch = next_epoch();   /* release or protection change */
+        ctl->mem_changed++;
+        emit_change(ctl, kind, &now, oldprot, &emitted, &deferred);
+    }
+
+    if (deferred)
+        ctl->flags |= VMPX_DYN_F_MEM_TRUNC;
 
     memcpy(g_prev, g_cur, (size_t)n * sizeof(g_cur[0]));
     g_prev_n = n;
