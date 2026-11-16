@@ -11,7 +11,10 @@
 
 #define DYN_MAX_RANGES 4096
 #define DYN_MAX_PAGES  262144u       /* 1 GiB / 4 KiB */
-#define DYN_EMIT_CAP   512u          /* page events published per tick */
+#define DYN_EMIT_CAP   2048u          /* page events published per tick; matches
+                                       * the per-producer ring, so a tick can never
+                                       * defer work the transport could have carried */
+#define DYN_MAX_HASH_THREADS 8u      /* hash pass workers, bounded */
 
 typedef struct {
     uint64_t base;
@@ -44,14 +47,17 @@ static dyn_page_t* g_cur = NULL;
 static uint32_t g_prev_n = 0;
 static uint32_t g_have_prev = 0;
 static HANDLE g_thread = NULL;
-static uint32_t g_epoch_next = 0;
+static volatile LONG g_epoch_next = 0;
 
 /* Monotonic, never-zero page identity epoch. Advances when a page's identity
  * tuple (hash, crc, protection) changes, when it first appears, or when it is
- * released; unchanged pages keep the epoch they were first observed with. */
+ * released; unchanged pages keep the epoch they were first observed with.
+ * Allocated under the interlocked counter because the hash pass runs on several
+ * threads at once. */
 static uint32_t next_epoch(void) {
-    uint32_t e = ++g_epoch_next;
-    return e ? e : ++g_epoch_next;
+    LONG e = InterlockedIncrement(&g_epoch_next);
+    while (e == 0) e = InterlockedIncrement(&g_epoch_next);
+    return (uint32_t)e;
 }
 
 static int readable(DWORD prot) {
@@ -128,34 +134,42 @@ static uint32_t collect_ranges(vmpx_dyn_ctl_t* ctl) {
     return n;
 }
 
+/* Page reads go through the kernel rather than a direct dereference. A page the
+ * code-coverage collector armed with PAGE_GUARD raises a guard violation on a
+ * direct read; that handler answers one instruction at a time and re-arms the
+ * guard between instructions, so a linear 4 KiB read of a guarded page costs
+ * thousands of exception round trips and the pass never finishes. The kernel
+ * copy reports the same guard as a failed read, which is the truthful answer:
+ * the page was not readable this pass. */
+static int read_page(uint64_t addr, uint8_t* buf, uint32_t n) {
+    SIZE_T got = 0;
+    dyn_api_suppress(1);
+    BOOL ok = ReadProcessMemory(GetCurrentProcess(), (LPCVOID)(uintptr_t)addr,
+                                buf, n, &got);
+    dyn_api_suppress(0);
+    return (ok && got == n) ? 0 : -1;
+}
+
 static int hash_page(uint64_t addr, uint64_t* hash, uint32_t* crc) {
-    __try {
-        const uint8_t* p = (const uint8_t*)(uintptr_t)addr;
-        uint64_t h = 1469598103934665603ULL;
-        uint32_t c = 2166136261u;
-        for (uint32_t i = 0; i < VMPX_DYN_PAGE; i++) {
-            h ^= p[i];
-            h *= 1099511628211ULL;
-            c = (c ^ p[i]) * 16777619u;
-        }
-        *hash = h;
-        *crc = c;
-        return 0;
-    } __except (EXCEPTION_EXECUTE_HANDLER) {
-        return -1;
+    uint8_t buf[VMPX_DYN_PAGE];
+    if (read_page(addr, buf, VMPX_DYN_PAGE) != 0) return -1;
+    uint64_t h = 1469598103934665603ULL;
+    uint32_t c = 2166136261u;
+    for (uint32_t i = 0; i < VMPX_DYN_PAGE; i++) {
+        h ^= buf[i];
+        h *= 1099511628211ULL;
+        c = (c ^ buf[i]) * 16777619u;
     }
+    *hash = h;
+    *crc = c;
+    return 0;
 }
 
 static uint32_t copy_preview(uint64_t addr, uint8_t* out, uint32_t cap) {
-    __try {
-        const uint8_t* p = (const uint8_t*)(uintptr_t)addr;
-        uint32_t n = cap;
-        if (n > VMPX_DYN_PAGE) n = VMPX_DYN_PAGE;
-        memcpy(out, p, n);
-        return n;
-    } __except (EXCEPTION_EXECUTE_HANDLER) {
-        return 0;
-    }
+    uint32_t n = cap;
+    if (n > VMPX_DYN_PAGE) n = VMPX_DYN_PAGE;
+    if (!n) return 0;
+    return read_page(addr, out, n) == 0 ? n : 0;
 }
 
 static int page_cmp(const void* a, const void* b) {
@@ -181,7 +195,12 @@ static int find_page(const dyn_page_t* arr, uint32_t n, uint64_t addr,
     return 0;
 }
 
-static uint32_t build_cur(vmpx_dyn_ctl_t* ctl) {
+/* Enumerate the committed readable pages into g_cur as addresses only. Hashing
+ * is a separate pass because a single-threaded hash of a large image does not
+ * fit inside the lifetime of a target that unpacks and exits: the 486 MB image
+ * here is ~118k pages, one pass is 480 MB of reads, and the mem worker only
+ * gets one tick before the process is gone. */
+static uint32_t index_pages(vmpx_dyn_ctl_t* ctl) {
     uint32_t nranges = collect_ranges(ctl);
     ctl->mem_ranges = nranges;
     uint32_t n = 0;
@@ -189,31 +208,126 @@ static uint32_t build_cur(vmpx_dyn_ctl_t* ctl) {
         uint64_t addr = g_ranges[r].base & ~(uint64_t)(VMPX_DYN_PAGE - 1);
         uint64_t end = g_ranges[r].base + g_ranges[r].size;
         while (addr < end && n < DYN_MAX_PAGES) {
-            uint64_t h = 0;
-            uint32_t c = 0;
-            if (hash_page(addr, &h, &c) == 0) {
-                DWORD prot = g_ranges[r].protect;
-                dyn_page_t old;
-                uint32_t epoch;
-                if (g_have_prev && find_page(g_prev, g_prev_n, addr, &old) &&
-                    old.hash == h && old.crc == c && old.protect == prot &&
-                    old.epoch) {
-                    epoch = old.epoch;      /* identity unchanged */
-                } else {
-                    epoch = next_epoch();   /* new or changed */
-                }
-                g_cur[n].addr = addr;
-                g_cur[n].hash = h;
-                g_cur[n].crc = c;
-                g_cur[n].spare = g_ranges[r].type;
-                g_cur[n].protect = prot;
-                g_cur[n].epoch = epoch;
-                n++;
-            } else {
-                ctl->mem_errors++;
-            }
+            g_cur[n].addr = addr;
+            g_cur[n].spare = g_ranges[r].type;
+            g_cur[n].protect = g_ranges[r].protect;
+            g_cur[n].hash = 0;
+            g_cur[n].crc = 0;
+            g_cur[n].epoch = 0;
+            n++;
             addr += VMPX_DYN_PAGE;
         }
+    }
+    return n;
+}
+
+typedef struct {
+    uint32_t lo;      /* first g_cur slot owned by this job */
+    uint32_t hi;      /* one past the last slot */
+    uint32_t errors;  /* pages that faulted while being read */
+} hash_job_t;
+
+static DWORD WINAPI hash_job_main(LPVOID param) {
+    hash_job_t* j = (hash_job_t*)param;
+    for (uint32_t i = j->lo; i < j->hi; i++) {
+        uint64_t h = 0;
+        uint32_t c = 0;
+        dyn_page_t old;
+        if (hash_page(g_cur[i].addr, &h, &c) != 0) {
+            /* Not readable this pass - an armed code page, or a protection
+             * change mid-pass. Carrying the last identity keeps the page in
+             * the set without inventing a change. A page never read at all is
+             * dropped, because there is no identity to carry. */
+            if (g_have_prev && g_prev_n &&
+                find_page(g_prev, g_prev_n, g_cur[i].addr, &old)) {
+                g_cur[i].hash = old.hash;
+                g_cur[i].crc = old.crc;
+                g_cur[i].protect = old.protect;
+                g_cur[i].epoch = old.epoch;
+            } else {
+                j->errors++;
+                g_cur[i].epoch = 0;    /* never observed: dropped */
+            }
+            continue;
+        }
+        uint32_t epoch;
+        if (g_have_prev && g_prev_n &&
+            find_page(g_prev, g_prev_n, g_cur[i].addr, &old) &&
+            old.hash == h && old.crc == c && old.protect == g_cur[i].protect &&
+            old.epoch) {
+            epoch = old.epoch;      /* identity unchanged */
+        } else {
+            epoch = next_epoch();   /* new or changed */
+        }
+        g_cur[i].hash = h;
+        g_cur[i].crc = c;
+        g_cur[i].epoch = epoch;
+    }
+    return 0;
+}
+
+static uint32_t hash_workers(void) {
+    SYSTEM_INFO si;
+    GetSystemInfo(&si);
+    uint32_t n = si.dwNumberOfProcessors ? si.dwNumberOfProcessors : 1;
+    /* Bounded: the pass is memory-bandwidth bound well before one thread per
+     * core helps, and every extra thread is one the target can observe. */
+    if (n > DYN_MAX_HASH_THREADS) n = DYN_MAX_HASH_THREADS;
+    return n;
+}
+
+static uint32_t hash_pages_parallel(uint32_t npages) {
+    if (!npages) return 0;
+    uint32_t workers = hash_workers();
+    if (workers > npages) workers = npages;
+    if (workers <= 1) {
+        hash_job_t whole = { 0, npages, 0 };
+        (void)hash_job_main(&whole);
+        return whole.errors;
+    }
+
+    HANDLE th[DYN_MAX_HASH_THREADS];
+    hash_job_t jobs[DYN_MAX_HASH_THREADS];
+    uint32_t started = 0;
+    uint32_t errors = 0;
+    uint32_t per = npages / workers;
+    uint32_t rem = npages % workers;
+    uint32_t lo = 0;
+
+    ZeroMemory(th, sizeof(th));
+    for (uint32_t k = 0; k < workers; k++) {
+        uint32_t span = per + (k < rem ? 1u : 0u);
+        jobs[k].lo = lo;
+        jobs[k].hi = lo + span;
+        jobs[k].errors = 0;
+        lo += span;
+        started = k + 1;
+        if (!span) break;
+        th[k] = CreateThread(NULL, 0, hash_job_main, &jobs[k], 0, NULL);
+        /* A refused thread is a slower pass, not a failed one: run the slice
+         * inline so coverage is unchanged. */
+        if (!th[k]) (void)hash_job_main(&jobs[k]);
+    }
+    for (uint32_t k = 0; k < started; k++) {
+        if (th[k]) {
+            WaitForSingleObject(th[k], INFINITE);
+            CloseHandle(th[k]);
+        }
+        errors += jobs[k].errors;
+    }
+    return errors;
+}
+
+static uint32_t build_cur(vmpx_dyn_ctl_t* ctl) {
+    uint32_t npages = index_pages(ctl);
+    ctl->mem_errors += hash_pages_parallel(npages);
+    /* A page that could not be read is dropped rather than published with a
+     * stale digest: "could not read" and "did not change" must not look alike. */
+    uint32_t n = 0;
+    for (uint32_t i = 0; i < npages; i++) {
+        if (!g_cur[i].epoch) continue;
+        if (n != i) g_cur[n] = g_cur[i];
+        n++;
     }
     qsort(g_cur, n, sizeof(g_cur[0]), page_cmp);
     return n;

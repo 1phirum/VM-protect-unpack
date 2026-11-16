@@ -52,6 +52,7 @@ typedef struct {
     uint64_t max_capture;
     uint32_t max_events;
     uint32_t events_seen;
+    uint32_t reset_pre;   /* events drained before the reset zeroed the counter */
     uint32_t by_type[10];
     uint32_t by_algo[3];
     vmpx_loss_ledger_t ledge;
@@ -672,7 +673,12 @@ int dyn_report_run(int argc, char** argv) {
     if (!keep) {
         uint32_t unsettled_shard[VMPX_DYN_MAX_PRODUCERS];
         uint32_t unsettled_tid[VMPX_DYN_MAX_PRODUCERS];
+        uint32_t pre = c.events_seen;
         (void)drain_and_process(&c, ctl, batch);
+        /* Anything the agent published before this attach belongs to the
+         * session. It is counted here because the reset below zeroes the
+         * producer-side total the summary otherwise reports. */
+        c.reset_pre += c.events_seen - pre;
         uint32_t unsettled_n =
             host_reset_wait(ctl, VMPX_DYN_RESET_WAIT_MS,
                             unsettled_shard, unsettled_tid,
@@ -779,7 +785,7 @@ int dyn_report_run(int argc, char** argv) {
                              0, dropped);
         vmpx_loss_transport_t lt;
         memset(&lt, 0, sizeof(lt));
-        lt.total = ctl->total;
+        lt.total = ctl->total + c.reset_pre;
         lt.events = c.events_seen;
         lt.dropped = dropped;
         lt.shard_dropped = shard_dropped;
@@ -823,8 +829,8 @@ int dyn_report_run(int argc, char** argv) {
         fprintf(sf,
                 "transport_total=%u shard_dropped=%u overflow=%u reentrant=%u "
                 "stalled=%u invalid=%u\n",
-                ctl->total, shard_dropped, overflow, reentrant, stalled,
-                invalid);
+                ctl->total + c.reset_pre, shard_dropped, overflow, reentrant,
+                stalled, invalid);
         fprintf(sf, "mem_pages=%u mem_changed=%u mem_records=%u read_fail=%u\n",
                 mem_pages, mem_changed, c.mem_records, c.read_fail);
         fprintf(sf, "mem_ranges=%u mem_errors=%u\n", mem_ranges, mem_errors);
