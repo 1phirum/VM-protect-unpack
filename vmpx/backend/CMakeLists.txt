@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.24)
+project(VmpxWorker LANGUAGES C)
+if(NOT MSVC OR NOT CMAKE_SIZEOF_VOID_P EQUAL 4)
+  message(FATAL_ERROR "The existing worker and agent require MSVC x86")
+endif()
+set(CMAKE_C_STANDARD 11)
+get_filename_component(VMPX_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/.." ABSOLUTE)
+include(${CMAKE_CURRENT_SOURCE_DIR}/sources.cmake)
+add_executable(vmpx ${VMPX_CLI_SOURCES})
+add_library(vmpxagent SHARED ${VMPX_AGENT_SOURCES})
+foreach(target vmpx vmpxagent)
+  target_include_directories(${target} PRIVATE ${VMPX_ROOT}/include
+                                               ${VMPX_ROOT}/src)
+  target_compile_options(${target} PRIVATE /W4 /O2)
+  set_target_properties(
+    ${target} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${VMPX_OUTPUT_DIR}"
+                         LIBRARY_OUTPUT_DIRECTORY "${VMPX_OUTPUT_DIR}")
+endforeach()
+set_property(TARGET vmpxagent PROPERTY MSVC_RUNTIME_LIBRARY MultiThreaded)
+target_link_libraries(vmpx PRIVATE shell32 advapi32 user32 psapi)
+target_link_libraries(vmpxagent PRIVATE user32)

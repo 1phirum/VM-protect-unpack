@@ -1,0 +1,8 @@
+@echo off
+call "@VMPX_VCVARS32@" >nul
+if errorlevel 1 exit /b 1
+if "%1"=="configure" (
+ "@CMAKE_COMMAND@" -S "@PROJECT_SOURCE_DIR@/backend" -B "@CMAKE_BINARY_DIR@/backend-x86" -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DVMPX_OUTPUT_DIR="@CMAKE_BINARY_DIR@/bin"
+) else (
+ "@CMAKE_COMMAND@" --build "@CMAKE_BINARY_DIR@/backend-x86" --parallel
+)

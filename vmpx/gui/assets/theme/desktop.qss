@@ -1,0 +1,121 @@
+QWidget {
+    color: #20262d;
+    background: #ffffff;
+}
+QMainWindow, QMenuBar, QStatusBar {
+    background: #ffffff;
+}
+QLabel {
+    background: transparent;
+}
+QToolBar {
+    background: #ffffff;
+    border-bottom: 1px solid #cdd2d7;
+    padding: 6px;
+    spacing: 6px;
+}
+#PageToolbar {
+    border: 0;
+    padding: 0;
+    spacing: 6px;
+}
+#PageToolbar QToolButton {
+    padding: 5px 8px;
+}
+#TargetBar {
+    background: #ffffff;
+    border: 1px solid #cdd2d7;
+}
+#TargetPath, #TargetStatus {
+    background: transparent;
+    padding: 2px 0;
+}
+#TargetStatus {
+    border-left: 1px solid #cdd2d7;
+    padding-left: 14px;
+}
+#Navigation {
+    background: #ffffff;
+    border: 0;
+    padding: 8px;
+    outline: 0;
+}
+#Navigation::item {
+    padding: 7px 14px;
+    border: 0;
+}
+#Navigation::item:hover {
+    background: #f4f6f8;
+}
+#Navigation::item:selected, QTableView::item:selected {
+    background: #e5edf4;
+    color: #20262d;
+}
+QTableView {
+    border: 1px solid #e4e7ea;
+    alternate-background-color: #ffffff;
+    selection-background-color: #e5edf4;
+    selection-color: #20262d;
+}
+QHeaderView::section {
+    background: #ffffff;
+    padding: 6px;
+    border: 0;
+    border-bottom: 1px solid #cdd2d7;
+    color: #434b54;
+}
+QLineEdit, QSpinBox, QPlainTextEdit {
+    border: 1px solid #cdd2d7;
+    border-radius: 2px;
+    padding: 5px;
+}
+QPushButton, QToolButton {
+    border: 1px solid #cdd2d7;
+    border-radius: 3px;
+    padding: 5px 12px;
+    background: #ffffff;
+}
+QPushButton:hover, QToolButton:hover {
+    background: #e5edf4;
+}
+QPushButton:disabled, QToolButton:disabled {
+    color: #78818b;
+    background: #fafafa;
+}
+QPushButton:focus, QToolButton:focus, QLineEdit:focus, QSpinBox:focus {
+    border: 1px solid #67717d;
+}
+QPushButton:default {
+    border-color: #67717d;
+    background: #ffffff;
+}
+#BrowseButton {
+    padding: 5px;
+}
+#PageMessage {
+    color: #67717d;
+    padding: 4px;
+}
+QTableView {
+    outline: 0;
+}
+QScrollBar:vertical {
+    background: #ffffff;
+    width: 10px;
+    margin: 0;
+}
+QScrollBar::handle:vertical {
+    background: #b8c0c8;
+    border-radius: 3px;
+    min-height: 28px;
+    margin: 2px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+QMenu::item:selected {
+    background: #e5edf4;
+}

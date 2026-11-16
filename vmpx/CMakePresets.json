@@ -1,0 +1,41 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "windows-qt-mingw",
+            "displayName": "Qt 6 Widgets + MSVC x86 backend",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/qt-release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_PREFIX_PATH": "C:/Qt/6.11.0/mingw_64",
+                "CMAKE_C_COMPILER": "C:/Qt/Tools/mingw1310_64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/Qt/Tools/mingw1310_64/bin/g++.exe",
+                "CMAKE_MAKE_PROGRAM": "C:/Qt/Tools/Ninja/ninja.exe",
+                "BUILD_TESTING": true
+            },
+            "environment": {
+                "PATH": "C:/Qt/Tools/mingw1310_64/bin;C:/Qt/6.11.0/mingw_64/bin;$penv{PATH}"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-qt-mingw",
+            "configurePreset": "windows-qt-mingw",
+            "jobs": 6
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "windows-qt-mingw",
+            "configurePreset": "windows-qt-mingw",
+            "output": {
+                "outputOnFailure": true
+            },
+            "environment": {
+                "PATH": "C:/Qt/Tools/mingw1310_64/bin;C:/Qt/6.11.0/mingw_64/bin;$penv{PATH}"
+            }
+        }
+    ]
+}

@@ -1,0 +1,410 @@
+[
+  {
+    "name": "sections",
+    "width": 1441,
+    "height": 901,
+    "texts": 215,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "memory",
+    "width": 1441,
+    "height": 901,
+    "texts": 215,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "artifacts",
+    "width": 1441,
+    "height": 901,
+    "texts": 127,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "attach",
+    "width": 641,
+    "height": 449,
+    "texts": 20,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "rebuild",
+    "width": 681,
+    "height": 733,
+    "texts": 23,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "overview",
+    "width": 1441,
+    "height": 901,
+    "texts": 87,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "imports",
+    "width": 1441,
+    "height": 901,
+    "texts": 90,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "liveimports",
+    "width": 1441,
+    "height": 901,
+    "texts": 94,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "modules",
+    "width": 1441,
+    "height": 901,
+    "texts": 98,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "hex",
+    "width": 1441,
+    "height": 901,
+    "texts": 89,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "hex-read",
+    "width": 1441,
+    "height": 901,
+    "texts": 65,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "windows",
+    "width": 1441,
+    "height": 901,
+    "texts": 88,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "agent",
+    "width": 1441,
+    "height": 901,
+    "texts": 85,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "watch",
+    "width": 1441,
+    "height": 901,
+    "texts": 105,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "watch-stopped",
+    "width": 1441,
+    "height": 901,
+    "texts": 68,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "analysis",
+    "width": 1441,
+    "height": 901,
+    "texts": 81,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "analysis-result",
+    "width": 1441,
+    "height": 901,
+    "texts": 80,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "log",
+    "width": 1441,
+    "height": 901,
+    "texts": 96,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "empty",
+    "width": 1441,
+    "height": 901,
+    "texts": 63,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "busy",
+    "width": 1441,
+    "height": 901,
+    "texts": 67,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "capture-result",
+    "width": 1441,
+    "height": 901,
+    "texts": 68,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "open",
+    "width": 741,
+    "height": 403,
+    "texts": 10,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "launch",
+    "width": 741,
+    "height": 493,
+    "texts": 12,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "inject",
+    "width": 741,
+    "height": 447,
+    "texts": 10,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "dump",
+    "width": 741,
+    "height": 536,
+    "texts": 12,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "snapshot",
+    "width": 740,
+    "height": 543,
+    "texts": 11,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "oep",
+    "width": 740,
+    "height": 565,
+    "texts": 13,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "write",
+    "width": 740,
+    "height": 493,
+    "texts": 13,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "write-result",
+    "width": 590,
+    "height": 357,
+    "texts": 7,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "watch-options",
+    "width": 740,
+    "height": 674,
+    "texts": 19,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "run",
+    "width": 740,
+    "height": 474,
+    "texts": 11,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "analysis-options",
+    "width": 740,
+    "height": 562,
+    "texts": 15,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "import-options",
+    "width": 620,
+    "height": 440,
+    "texts": 8,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "settings",
+    "width": 740,
+    "height": 594,
+    "texts": 15,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "error",
+    "width": 660,
+    "height": 438,
+    "texts": 8,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "attach-incompatible",
+    "width": 640,
+    "height": 359,
+    "texts": 6,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "cancel-task",
+    "width": 610,
+    "height": 320,
+    "texts": 6,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "clear-log",
+    "width": 610,
+    "height": 319,
+    "texts": 5,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "export",
+    "width": 740,
+    "height": 345,
+    "texts": 7,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "export-result",
+    "width": 600,
+    "height": 292,
+    "texts": 5,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "browse",
+    "width": 740,
+    "height": 442,
+    "texts": 15,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "about",
+    "width": 680,
+    "height": 440,
+    "texts": 8,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "shortcuts",
+    "width": 680,
+    "height": 495,
+    "texts": 18,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "filter",
+    "width": 680,
+    "height": 402,
+    "texts": 9,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "memory-options",
+    "width": 680,
+    "height": 526,
+    "texts": 12,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "file-menu",
+    "width": 370,
+    "height": 178,
+    "texts": 10,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "edit-menu",
+    "width": 370,
+    "height": 146,
+    "texts": 8,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "view-menu",
+    "width": 370,
+    "height": 274,
+    "texts": 16,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "capture-menu",
+    "width": 370,
+    "height": 178,
+    "texts": 10,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "tools-menu",
+    "width": 370,
+    "height": 210,
+    "texts": 12,
+    "overflow": [],
+    "collisions": []
+  },
+  {
+    "name": "help-menu",
+    "width": 370,
+    "height": 82,
+    "texts": 4,
+    "overflow": [],
+    "collisions": []
+  }
+]

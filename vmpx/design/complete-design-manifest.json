@@ -1,0 +1,6195 @@
+{
+  "docId": "doc:akbsxyke4",
+  "pageId": "page:15w8qkke4",
+  "frames": [
+    {
+      "key": "sections",
+      "id": "1:0cou4i5kk",
+      "name": "01 / File inspection",
+      "w": 1440,
+      "h": 900,
+      "file": "sections"
+    },
+    {
+      "key": "memory",
+      "id": "1:rnckif5to",
+      "name": "02 / Memory inspection",
+      "w": 1440,
+      "h": 900,
+      "file": "memory"
+    },
+    {
+      "key": "artifacts",
+      "id": "1:rltjyj5xi",
+      "name": "03 / Reconstruction result",
+      "w": 1440,
+      "h": 900,
+      "file": "artifacts"
+    },
+    {
+      "key": "attach",
+      "id": "1:ywrcwe60y",
+      "name": "04 / Attach dialog",
+      "w": 640,
+      "h": 448,
+      "file": "attach"
+    },
+    {
+      "key": "rebuild",
+      "id": "1:zw4k7w627",
+      "name": "05 / Rebuild dialog",
+      "w": 680,
+      "h": 732,
+      "file": "rebuild"
+    },
+    {
+      "key": "overview",
+      "id": "1:v78cu2qjd",
+      "name": "06 / Target overview",
+      "w": 1440,
+      "h": 900,
+      "file": "overview"
+    },
+    {
+      "key": "imports",
+      "id": "1:82nxnfqjj",
+      "name": "07 / Static imports",
+      "w": 1440,
+      "h": 900,
+      "file": "imports"
+    },
+    {
+      "key": "liveimports",
+      "id": "1:2yrgleqjt",
+      "name": "08 / Live imports",
+      "w": 1440,
+      "h": 900,
+      "file": "liveimports"
+    },
+    {
+      "key": "modules",
+      "id": "1:gq0lftqk0",
+      "name": "09 / Loaded modules",
+      "w": 1440,
+      "h": 900,
+      "file": "modules"
+    },
+    {
+      "key": "hex",
+      "id": "1:gp33y0qk8",
+      "name": "10 / Memory hex editor",
+      "w": 1440,
+      "h": 900,
+      "file": "hex"
+    },
+    {
+      "key": "hex-read",
+      "id": "1:wvb174qkc",
+      "name": "11 / Hex read result",
+      "w": 1440,
+      "h": 900,
+      "file": "hex-read"
+    },
+    {
+      "key": "windows",
+      "id": "1:mgbhinqki",
+      "name": "12 / Process windows",
+      "w": 1440,
+      "h": 900,
+      "file": "windows"
+    },
+    {
+      "key": "agent",
+      "id": "1:8hc6fvqko",
+      "name": "13 / Agent status",
+      "w": 1440,
+      "h": 900,
+      "file": "agent"
+    },
+    {
+      "key": "watch",
+      "id": "1:5db89yqks",
+      "name": "14 / Memory watch active",
+      "w": 1440,
+      "h": 900,
+      "file": "watch"
+    },
+    {
+      "key": "watch-stopped",
+      "id": "1:0rjse0qkz",
+      "name": "15 / Memory watch stopped",
+      "w": 1440,
+      "h": 900,
+      "file": "watch-stopped"
+    },
+    {
+      "key": "analysis",
+      "id": "1:8ea9zgql6",
+      "name": "16 / Offline analysis",
+      "w": 1440,
+      "h": 900,
+      "file": "analysis"
+    },
+    {
+      "key": "analysis-result",
+      "id": "1:6hzms0qld",
+      "name": "17 / Offline analysis results",
+      "w": 1440,
+      "h": 900,
+      "file": "analysis-result"
+    },
+    {
+      "key": "log",
+      "id": "1:8pzv09qlk",
+      "name": "18 / Session log",
+      "w": 1440,
+      "h": 900,
+      "file": "log"
+    },
+    {
+      "key": "empty",
+      "id": "1:wlsmnxqlr",
+      "name": "19 / Empty workspace",
+      "w": 1440,
+      "h": 900,
+      "file": "empty"
+    },
+    {
+      "key": "busy",
+      "id": "1:u4zzt7qlx",
+      "name": "20 / Capture in progress",
+      "w": 1440,
+      "h": 900,
+      "file": "busy"
+    },
+    {
+      "key": "capture-result",
+      "id": "1:cn5ly2qmb",
+      "name": "21 / Capture complete",
+      "w": 1440,
+      "h": 900,
+      "file": "capture-result"
+    },
+    {
+      "key": "open",
+      "id": "1:odpvppqmh",
+      "name": "22 / Open executable",
+      "w": 740,
+      "h": 402,
+      "file": "open"
+    },
+    {
+      "key": "launch",
+      "id": "1:y8im8xqms",
+      "name": "23 / Launch target",
+      "w": 740,
+      "h": 492,
+      "file": "launch"
+    },
+    {
+      "key": "inject",
+      "id": "1:fcgybgqmz",
+      "name": "24 / Load agent DLL",
+      "w": 740,
+      "h": 446,
+      "file": "inject"
+    },
+    {
+      "key": "dump",
+      "id": "1:n45wj9qn6",
+      "name": "25 / Capture mapped image",
+      "w": 740,
+      "h": 535,
+      "file": "dump"
+    },
+    {
+      "key": "snapshot",
+      "id": "1:sh3mfnqnc",
+      "name": "26 / Save private-memory snapshot",
+      "w": 740,
+      "h": 543,
+      "file": "snapshot"
+    },
+    {
+      "key": "oep",
+      "id": "1:pkorh5qnk",
+      "name": "27 / Entry-point capture",
+      "w": 740,
+      "h": 565,
+      "file": "oep"
+    },
+    {
+      "key": "write",
+      "id": "1:w5h79aqno",
+      "name": "28 / Write process memory",
+      "w": 740,
+      "h": 493,
+      "file": "write"
+    },
+    {
+      "key": "write-result",
+      "id": "1:tqmlnmqny",
+      "name": "29 / Memory write result",
+      "w": 590,
+      "h": 357,
+      "file": "write-result"
+    },
+    {
+      "key": "watch-options",
+      "id": "1:698cesqo5",
+      "name": "30 / Configure memory watch",
+      "w": 740,
+      "h": 674,
+      "file": "watch-options"
+    },
+    {
+      "key": "run",
+      "id": "1:bj23hiqoj",
+      "name": "31 / Validate reconstructed image",
+      "w": 740,
+      "h": 474,
+      "file": "run"
+    },
+    {
+      "key": "analysis-options",
+      "id": "1:a3c0ntqop",
+      "name": "32 / Configure offline analysis",
+      "w": 740,
+      "h": 562,
+      "file": "analysis-options"
+    },
+    {
+      "key": "import-options",
+      "id": "1:91nn7dqow",
+      "name": "33 / Import inspection options",
+      "w": 620,
+      "h": 440,
+      "file": "import-options"
+    },
+    {
+      "key": "settings",
+      "id": "1:a208y5qp4",
+      "name": "34 / Workspace settings",
+      "w": 740,
+      "h": 594,
+      "file": "settings"
+    },
+    {
+      "key": "error",
+      "id": "1:mekoc6qpb",
+      "name": "35 / Process operation failed",
+      "w": 660,
+      "h": 438,
+      "file": "error"
+    },
+    {
+      "key": "attach-incompatible",
+      "id": "1:k1ezzsqpo",
+      "name": "36 / Incompatible process",
+      "w": 640,
+      "h": 359,
+      "file": "attach-incompatible"
+    },
+    {
+      "key": "cancel-task",
+      "id": "1:fwzba2qpv",
+      "name": "37 / Cancel capture",
+      "w": 610,
+      "h": 320,
+      "file": "cancel-task"
+    },
+    {
+      "key": "clear-log",
+      "id": "1:bwlab8qq2",
+      "name": "38 / Clear visible output",
+      "w": 610,
+      "h": 319,
+      "file": "clear-log"
+    },
+    {
+      "key": "export",
+      "id": "1:5hzxxxqq8",
+      "name": "39 / Export session output",
+      "w": 740,
+      "h": 345,
+      "file": "export"
+    },
+    {
+      "key": "export-result",
+      "id": "1:7b0wziqqg",
+      "name": "40 / Export complete",
+      "w": 600,
+      "h": 292,
+      "file": "export-result"
+    },
+    {
+      "key": "browse",
+      "id": "1:bfbyt9qqn",
+      "name": "41 / Select local file",
+      "w": 740,
+      "h": 442,
+      "file": "browse"
+    },
+    {
+      "key": "about",
+      "id": "1:rk8c2hqqv",
+      "name": "42 / About VMPX",
+      "w": 680,
+      "h": 440,
+      "file": "about"
+    },
+    {
+      "key": "shortcuts",
+      "id": "1:jbgyo1qr2",
+      "name": "43 / Keyboard shortcuts",
+      "w": 680,
+      "h": 495,
+      "file": "shortcuts"
+    },
+    {
+      "key": "filter",
+      "id": "1:26s33nqrc",
+      "name": "44 / Filter table",
+      "w": 680,
+      "h": 402,
+      "file": "filter"
+    },
+    {
+      "key": "memory-options",
+      "id": "1:3yf57aqrj",
+      "name": "45 / Memory map options",
+      "w": 680,
+      "h": 526,
+      "file": "memory-options"
+    },
+    {
+      "key": "file-menu",
+      "id": "1:dxnnpsqrr",
+      "name": "46 / File menu",
+      "w": 370,
+      "h": 178,
+      "file": "file-menu"
+    },
+    {
+      "key": "edit-menu",
+      "id": "1:rtzk4fqrw",
+      "name": "47 / Edit menu",
+      "w": 370,
+      "h": 146,
+      "file": "edit-menu"
+    },
+    {
+      "key": "view-menu",
+      "id": "1:k7y7wwqs0",
+      "name": "48 / View menu",
+      "w": 370,
+      "h": 274,
+      "file": "view-menu"
+    },
+    {
+      "key": "capture-menu",
+      "id": "1:4qy4t0qs7",
+      "name": "49 / Capture menu",
+      "w": 370,
+      "h": 178,
+      "file": "capture-menu"
+    },
+    {
+      "key": "tools-menu",
+      "id": "1:ei3mfgqse",
+      "name": "50 / Tools menu",
+      "w": 370,
+      "h": 210,
+      "file": "tools-menu"
+    },
+    {
+      "key": "help-menu",
+      "id": "1:0m6ibpqsn",
+      "name": "51 / Help menu",
+      "w": 370,
+      "h": 82,
+      "file": "help-menu"
+    },
+    {
+      "key": "state-attach",
+      "id": "1:d7mc5pgcu",
+      "name": "52 / Attach / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-attach"
+    },
+    {
+      "key": "state-rebuild",
+      "id": "1:vu2m8vggw",
+      "name": "53 / rebuild / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-rebuild"
+    },
+    {
+      "key": "state-open",
+      "id": "1:d4cbu1gir",
+      "name": "54 / open / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-open"
+    },
+    {
+      "key": "state-launch",
+      "id": "1:e3ofncgl0",
+      "name": "55 / launch / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-launch"
+    },
+    {
+      "key": "state-inject",
+      "id": "1:g5blpvgmp",
+      "name": "56 / inject / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-inject"
+    },
+    {
+      "key": "state-dump",
+      "id": "1:itpdj0gp3",
+      "name": "57 / dump / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-dump"
+    },
+    {
+      "key": "state-snapshot",
+      "id": "1:fv0kabgv8",
+      "name": "58 / snapshot / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-snapshot"
+    },
+    {
+      "key": "state-oep",
+      "id": "1:fam7y5h0k",
+      "name": "59 / oep / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-oep"
+    },
+    {
+      "key": "state-write",
+      "id": "1:5cde4jh74",
+      "name": "60 / write / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-write"
+    },
+    {
+      "key": "state-write-result",
+      "id": "1:m7fvpahde",
+      "name": "61 / write-result / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-write-result"
+    },
+    {
+      "key": "state-watch-options",
+      "id": "1:jv1li9hj9",
+      "name": "62 / watch-options / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-watch-options"
+    },
+    {
+      "key": "state-run",
+      "id": "1:6nt7v9hoj",
+      "name": "63 / run / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-run"
+    },
+    {
+      "key": "state-analysis-options",
+      "id": "1:skjr8ehrs",
+      "name": "64 / analysis-options / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-analysis-options"
+    },
+    {
+      "key": "state-import-options",
+      "id": "1:ozja0si51",
+      "name": "65 / import-options / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-import-options"
+    },
+    {
+      "key": "state-settings",
+      "id": "1:k9gvjxiav",
+      "name": "66 / settings / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-settings"
+    },
+    {
+      "key": "state-error",
+      "id": "1:gque1fiie",
+      "name": "67 / error / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-error"
+    },
+    {
+      "key": "state-attach-incompatible",
+      "id": "1:hoqyo0ira",
+      "name": "68 / attach-incompatible / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-attach-incompatible"
+    },
+    {
+      "key": "state-cancel-task",
+      "id": "1:tupqhiiz9",
+      "name": "69 / cancel-task / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-cancel-task"
+    },
+    {
+      "key": "state-clear-log",
+      "id": "1:lhwwkxj89",
+      "name": "70 / clear-log / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-clear-log"
+    },
+    {
+      "key": "state-export",
+      "id": "1:gi0hveji7",
+      "name": "71 / export / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-export"
+    },
+    {
+      "key": "state-export-result",
+      "id": "1:1bjiqljq2",
+      "name": "72 / export-result / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-export-result"
+    },
+    {
+      "key": "state-browse",
+      "id": "1:ektyu4jzo",
+      "name": "73 / browse / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-browse"
+    },
+    {
+      "key": "state-about",
+      "id": "1:7u64mhk42",
+      "name": "74 / about / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-about"
+    },
+    {
+      "key": "state-shortcuts",
+      "id": "1:qxaj11ki6",
+      "name": "75 / shortcuts / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-shortcuts"
+    },
+    {
+      "key": "state-filter",
+      "id": "1:qjed44kpb",
+      "name": "76 / filter / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-filter"
+    },
+    {
+      "key": "state-memory-options",
+      "id": "1:yheh89kzc",
+      "name": "77 / memory-options / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-memory-options"
+    },
+    {
+      "key": "state-file-menu",
+      "id": "1:tjkvlwl91",
+      "name": "78 / file-menu / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-file-menu"
+    },
+    {
+      "key": "state-edit-menu",
+      "id": "1:norqbklf7",
+      "name": "79 / edit-menu / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-edit-menu"
+    },
+    {
+      "key": "state-view-menu",
+      "id": "1:7x3srlltm",
+      "name": "80 / view-menu / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-view-menu"
+    },
+    {
+      "key": "state-capture-menu",
+      "id": "1:p9l67um30",
+      "name": "81 / capture-menu / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-capture-menu"
+    },
+    {
+      "key": "state-tools-menu",
+      "id": "1:3ck2rxmcq",
+      "name": "82 / tools-menu / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-tools-menu"
+    },
+    {
+      "key": "state-help-menu",
+      "id": "1:f5a71amgz",
+      "name": "83 / help-menu / Desktop state",
+      "w": 1440,
+      "h": 900,
+      "file": "state-help-menu"
+    },
+    {
+      "key": "no-results",
+      "id": "1:1ghohjqma",
+      "name": "84 / No matching memory regions",
+      "w": 1440,
+      "h": 900,
+      "file": "no-results"
+    },
+    {
+      "key": "partial-read",
+      "id": "1:655qlyr0a",
+      "name": "85 / Partial memory read",
+      "w": 1440,
+      "h": 900,
+      "file": "partial-read"
+    },
+    {
+      "key": "read-failed",
+      "id": "1:v4u6qtrad",
+      "name": "86 / Memory read failed",
+      "w": 1440,
+      "h": 900,
+      "file": "read-failed"
+    },
+    {
+      "key": "invalid-filter",
+      "id": "1:mmesnvroh",
+      "name": "87 / Invalid filter",
+      "w": 1440,
+      "h": 900,
+      "file": "invalid-filter"
+    }
+  ],
+  "commands": {
+    "info": [
+      "overview",
+      "sections"
+    ],
+    "imports": [
+      "imports",
+      "import-options"
+    ],
+    "launch": [
+      "launch"
+    ],
+    "modules": [
+      "modules"
+    ],
+    "inject": [
+      "inject",
+      "agent"
+    ],
+    "dump": [
+      "dump",
+      "busy",
+      "capture-result"
+    ],
+    "liveimports": [
+      "liveimports",
+      "import-options"
+    ],
+    "agentstatus": [
+      "agent"
+    ],
+    "peek": [
+      "hex",
+      "hex-read"
+    ],
+    "poke": [
+      "write",
+      "write-result"
+    ],
+    "rebuild": [
+      "rebuild",
+      "artifacts"
+    ],
+    "windows": [
+      "windows"
+    ],
+    "memmap": [
+      "memory",
+      "memory-options"
+    ],
+    "oep": [
+      "oep"
+    ],
+    "snap": [
+      "snapshot"
+    ],
+    "run": [
+      "run",
+      "artifacts"
+    ],
+    "deobf": [
+      "analysis",
+      "analysis-options",
+      "analysis-result"
+    ],
+    "watch": [
+      "watch-options",
+      "watch",
+      "watch-stopped"
+    ]
+  },
+  "interactions": [
+    {
+      "source": "1:uib8rk5ko",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:wij8etri6"
+    },
+    {
+      "source": "1:rlzurx5ko",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:47gcnorib"
+    },
+    {
+      "source": "1:rc57wo5ko",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:ycl46drih"
+    },
+    {
+      "source": "1:vgug125ko",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:r2e3psris"
+    },
+    {
+      "source": "1:c8y98t5ko",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:rkh2pyrj7"
+    },
+    {
+      "source": "1:m3y1g55ko",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:zxzy3nrjh"
+    },
+    {
+      "source": "1:qq86pw5ko",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:s2xb8frjo"
+    },
+    {
+      "source": "1:buu4s75ko",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:jkjjo7rk0"
+    },
+    {
+      "source": "1:9lnwjk5kp",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:of21j8rkc"
+    },
+    {
+      "source": "1:um3cgz5kp",
+      "name": "Text / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:x4p5j8rku"
+    },
+    {
+      "source": "1:yh55fd5kp",
+      "name": "Text / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:nuyalsrl5"
+    },
+    {
+      "source": "1:niqzni5kp",
+      "name": "Text / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:5cuw8lrlf"
+    },
+    {
+      "source": "1:mxcuu25kp",
+      "name": "Text / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:3op6x1rlq"
+    },
+    {
+      "source": "1:23ris55kp",
+      "name": "Filter",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:8kl8iirm9"
+    },
+    {
+      "source": "1:tljjqwpy3",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:j9gdb6rmm"
+    },
+    {
+      "source": "1:i8jt1mpyu",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:h89zsdrn4"
+    },
+    {
+      "source": "1:6r3p9ppze",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:e82yrrrnd"
+    },
+    {
+      "source": "1:w63maypzr",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:pn86z2rnn"
+    },
+    {
+      "source": "1:21zt27q06",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:wl60w4rnx"
+    },
+    {
+      "source": "1:pqy0xnq0i",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:jd8h6cro3"
+    },
+    {
+      "source": "1:dtfi6sq0s",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:w7a7alroc"
+    },
+    {
+      "source": "1:ydshozq19",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:aotyicrov"
+    },
+    {
+      "source": "1:2owzf2q1k",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:iut1rdrp3"
+    },
+    {
+      "source": "1:j0ccaiq1s",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:m233eyrpd"
+    },
+    {
+      "source": "1:d668itq21",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:gijs6crpo"
+    },
+    {
+      "source": "1:dcyg0gq28",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:th2i56rq4"
+    },
+    {
+      "source": "1:pp10t2q57",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:zy40yerqf"
+    },
+    {
+      "source": "1:kzqegm5to",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:w8a4fjrqo"
+    },
+    {
+      "source": "1:3aswso5tz",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:uofwm4rqu"
+    },
+    {
+      "source": "1:0gz3zv5tz",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:xia8zxrr3"
+    },
+    {
+      "source": "1:8jadth5tz",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:nksl7arrd"
+    },
+    {
+      "source": "1:wk1p815tz",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:fe763trrj"
+    },
+    {
+      "source": "1:ffa65s5tz",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:74f4yprrs"
+    },
+    {
+      "source": "1:4zhg925tz",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:fqr0x7rs1"
+    },
+    {
+      "source": "1:t06fhr5tz",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:3yy16irs6"
+    },
+    {
+      "source": "1:tt0hjl5tz",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:fbiup1rsf"
+    },
+    {
+      "source": "1:aob0u45tz",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:agu0p3rsr"
+    },
+    {
+      "source": "1:8ub3dd5tz",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:gl4tygrt2"
+    },
+    {
+      "source": "1:4r8vxg5tz",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:ylhorsrtb"
+    },
+    {
+      "source": "1:wkok2n5u0",
+      "name": "Text / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:gkdc1srtk"
+    },
+    {
+      "source": "1:inbcbk5u0",
+      "name": "Text / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:o1ctunrtt"
+    },
+    {
+      "source": "1:twdh5z5u0",
+      "name": "Text / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:781b74ru2"
+    },
+    {
+      "source": "1:r6g9xz5u0",
+      "name": "Text / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:po5y6lruf"
+    },
+    {
+      "source": "1:if9mkj5u0",
+      "name": "Filter",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:tz695arus"
+    },
+    {
+      "source": "1:1m1akn5u2",
+      "name": "Action / Save snapshot",
+      "to": "snapshot",
+      "action": "openOverlay",
+      "id": "int:wrbe42rv4"
+    },
+    {
+      "source": "1:isdnxs5u2",
+      "name": "Action / Capture image",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:xqti3nrvg"
+    },
+    {
+      "source": "1:9tr3aeq5t",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:eqihlgrvy"
+    },
+    {
+      "source": "1:h4s7wiq5y",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:bq5o5arw9"
+    },
+    {
+      "source": "1:cnvj7kq67",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:nzxbxlrwl"
+    },
+    {
+      "source": "1:fgp4dbq6e",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:pe5fvlrx2"
+    },
+    {
+      "source": "1:inw2vgq6h",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:845upmrxe"
+    },
+    {
+      "source": "1:e9pdkrq6m",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:pyql2vrxo"
+    },
+    {
+      "source": "1:x92x7aq6p",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:qnk4wcrxt"
+    },
+    {
+      "source": "1:z7nk1jq6v",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:zhf3ndrxy"
+    },
+    {
+      "source": "1:zjmwv9q70",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:0ge7ymry8"
+    },
+    {
+      "source": "1:90eg1eq74",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:bv9pxaryi"
+    },
+    {
+      "source": "1:tleg3cq7a",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:kym15jryw"
+    },
+    {
+      "source": "1:zrjat5q7d",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:iv9fwrrz6"
+    },
+    {
+      "source": "1:s6msn4q96",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:hux69xrzc"
+    },
+    {
+      "source": "1:hj9sm8q9c",
+      "name": "Action / Memory options",
+      "to": "memory-options",
+      "action": "openOverlay",
+      "id": "int:vo2i2jrzm"
+    },
+    {
+      "source": "1:gtf8h1q9g",
+      "name": "Action / Memory hex",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:1j9e9erzv"
+    },
+    {
+      "source": "1:sf6szqq9n",
+      "name": "Action / Memory write",
+      "to": "write",
+      "action": "openOverlay",
+      "id": "int:n68ujgs01"
+    },
+    {
+      "source": "1:1o3mf65xi",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:7hjmw4s0a"
+    },
+    {
+      "source": "1:qxqs975xj",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:909vx7s0k"
+    },
+    {
+      "source": "1:jebwp55xj",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:odnjbzs0u"
+    },
+    {
+      "source": "1:0ww31x5xj",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:07l4nqs0z"
+    },
+    {
+      "source": "1:voizas5xj",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:igyyges1c"
+    },
+    {
+      "source": "1:qplgvl5xj",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:246lims1q"
+    },
+    {
+      "source": "1:nv0w545xj",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:jrnjpws20"
+    },
+    {
+      "source": "1:nysu4s5xj",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:m7xnufs2a"
+    },
+    {
+      "source": "1:ec9pty5xj",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:rwnkies2h"
+    },
+    {
+      "source": "1:c63ai35xl",
+      "name": "Text / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:uwefwcs2t"
+    },
+    {
+      "source": "1:tadazr5xl",
+      "name": "Text / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:aex1n5s38"
+    },
+    {
+      "source": "1:6uxnx85xl",
+      "name": "Text / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:uvbr0fs3n"
+    },
+    {
+      "source": "1:2fhp7q5xl",
+      "name": "Text / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:je1lobs3v"
+    },
+    {
+      "source": "1:cchzu65xl",
+      "name": "Filter",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:tzznvvs4a"
+    },
+    {
+      "source": "1:jkjb645xv",
+      "name": "Action / Open output folder",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:tqvq61s4i"
+    },
+    {
+      "source": "1:1l2a6i5xv",
+      "name": "Action / View run log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:8e2ewxs53"
+    },
+    {
+      "source": "1:5amdyzqal",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:hfe3ols59"
+    },
+    {
+      "source": "1:78cdjgqav",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:4kmzyhs5j"
+    },
+    {
+      "source": "1:fd8ugdqb4",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:yd16ghs5p"
+    },
+    {
+      "source": "1:i3l1k8qbb",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:wq2xvvs60"
+    },
+    {
+      "source": "1:tfdpj5qbh",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:3w1sals69"
+    },
+    {
+      "source": "1:rwy8ciqbn",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:s7zlems6o"
+    },
+    {
+      "source": "1:3i1oy8qbu",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:597ti3s74"
+    },
+    {
+      "source": "1:h45tl8qc1",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:i912pzs7i"
+    },
+    {
+      "source": "1:j4lcheqca",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:r8wgk4s7u"
+    },
+    {
+      "source": "1:k67q8uqcg",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:faaj9as85"
+    },
+    {
+      "source": "1:0psqpyqcm",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:zu7x3ms8f"
+    },
+    {
+      "source": "1:v4cdseqcq",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:8fhovis8q"
+    },
+    {
+      "source": "1:zsfvfvqfh",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:a2zi7vs92"
+    },
+    {
+      "source": "1:k1vqsbqfo",
+      "name": "Action / Validate output",
+      "to": "run",
+      "action": "openOverlay",
+      "id": "int:3j0bgfs9f"
+    },
+    {
+      "source": "1:sayn1j60y",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:1hg1w5s9v"
+    },
+    {
+      "source": "1:4o86gb60y",
+      "name": "Dialog / Cancel attach",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:ht4349sab"
+    },
+    {
+      "source": "1:nyhret60y",
+      "name": "Dialog / Confirm attach",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:d77d44sau"
+    },
+    {
+      "source": "1:la38bk627",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:9wnjv9sb8"
+    },
+    {
+      "source": "1:9zo68x628",
+      "name": "Browse / Original executable",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:ntuyznsbk"
+    },
+    {
+      "source": "1:6aipgp628",
+      "name": "Browse / Image capture",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:rc9ujwsby"
+    },
+    {
+      "source": "1:xk5wr6628",
+      "name": "Browse / Output image",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:3pkj0vsce"
+    },
+    {
+      "source": "1:kkb2vlqh0",
+      "name": "Toggle / Rebuild cast",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:m4yvfssfr"
+    },
+    {
+      "source": "1:8zppruqh6",
+      "name": "Toggle / Rebuild clean",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:ark20ysj4"
+    },
+    {
+      "source": "1:ztpwfpqix",
+      "name": "Dialog / Cancel rebuild",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:m22cuisjo"
+    },
+    {
+      "source": "1:oavbnrqj7",
+      "name": "Dialog / Confirm rebuild",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:6q8lcksjy"
+    },
+    {
+      "source": "1:tizxusqjd",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:a7xjw7sk8"
+    },
+    {
+      "source": "1:36tme7qjd",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:47c0gjskj"
+    },
+    {
+      "source": "1:us5mwrqjd",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:arn2hmsku"
+    },
+    {
+      "source": "1:zl411rqjd",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:pimxgpsl5"
+    },
+    {
+      "source": "1:os2nopqjd",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:r73jb4slf"
+    },
+    {
+      "source": "1:rmiqkjqjd",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:doogdkslk"
+    },
+    {
+      "source": "1:yrjlj2qjd",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:u7xlotsly"
+    },
+    {
+      "source": "1:odmb67qjd",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:c25uqxsm8"
+    },
+    {
+      "source": "1:ptc9q9qjd",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:sm30hwsmi"
+    },
+    {
+      "source": "1:refodqqjd",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:r7wvassmv"
+    },
+    {
+      "source": "1:on93myqjd",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:nln37lsn8"
+    },
+    {
+      "source": "1:cc3yirqjd",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:h6odjhsnl"
+    },
+    {
+      "source": "1:5h65qtqjd",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:ml51eksnt"
+    },
+    {
+      "source": "1:x9x8xeqjd",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:5k6xo5so4"
+    },
+    {
+      "source": "1:4hdryzqjd",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:yw08svsoe"
+    },
+    {
+      "source": "1:dbuavhqjd",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:h0m6klsot"
+    },
+    {
+      "source": "1:qozsrcqjd",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:vdoeh3sp5"
+    },
+    {
+      "source": "1:h4zckmqjd",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:bfrc8dspg"
+    },
+    {
+      "source": "1:pv0on4qjd",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:2al3k8spm"
+    },
+    {
+      "source": "1:qnswopqjd",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:iw4uzuspx"
+    },
+    {
+      "source": "1:w9110yqjd",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:be6i6usq3"
+    },
+    {
+      "source": "1:oxskk1qjd",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:07d351sqe"
+    },
+    {
+      "source": "1:cbgubjqjd",
+      "name": "Workflow / Inspect file",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:oafirzsqm"
+    },
+    {
+      "source": "1:q6voy8qjd",
+      "name": "Workflow / Attach / launch",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:vlarkgsqw"
+    },
+    {
+      "source": "1:sq81vpqjd",
+      "name": "Workflow / Capture",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:seeqqesra"
+    },
+    {
+      "source": "1:5m7ca2qjd",
+      "name": "Workflow / Reconstruct / verify",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:ot2hxqsrm"
+    },
+    {
+      "source": "1:5p2rshqjj",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:i0kcs4sry"
+    },
+    {
+      "source": "1:9bwg9nqjj",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:1osw19ss8"
+    },
+    {
+      "source": "1:hpg5ktqjj",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:rjqow9ssk"
+    },
+    {
+      "source": "1:vhi9ykqjj",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:ey6tmrssx"
+    },
+    {
+      "source": "1:djvh1tqjj",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:uph2q6st8"
+    },
+    {
+      "source": "1:uglvz9qjj",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:89knrvstj"
+    },
+    {
+      "source": "1:o0sybhqjj",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:962jvzstw"
+    },
+    {
+      "source": "1:10evukqjj",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:nhlv5ysuh"
+    },
+    {
+      "source": "1:yxn1eeqjj",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:5a0ouxsuz"
+    },
+    {
+      "source": "1:09niq7qjj",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:wmm5svsvi"
+    },
+    {
+      "source": "1:rp3bhlqjj",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:zpdawpsvr"
+    },
+    {
+      "source": "1:5bf1j8qjj",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:yatpsfsw8"
+    },
+    {
+      "source": "1:1e4ov2qjj",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:72oc3aswu"
+    },
+    {
+      "source": "1:0dimiqqjj",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:gioo3asxc"
+    },
+    {
+      "source": "1:whd1cpqjj",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:0m6pggsxq"
+    },
+    {
+      "source": "1:144wp6qjj",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:2khoucsy3"
+    },
+    {
+      "source": "1:epf5ibqjj",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:r484basyd"
+    },
+    {
+      "source": "1:ecwbj4qjj",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:zocnc4syn"
+    },
+    {
+      "source": "1:dqsjasqjj",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:l8odtosyx"
+    },
+    {
+      "source": "1:v6tntcqjj",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:fe5b9ksz4"
+    },
+    {
+      "source": "1:ys19wdqjj",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:6rctb6szh"
+    },
+    {
+      "source": "1:6aga5eqjj",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:stseieszq"
+    },
+    {
+      "source": "1:9ouat2qjj",
+      "name": "Text / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:uh4yvst07"
+    },
+    {
+      "source": "1:ja17e2qjj",
+      "name": "Filter / rows",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:wnx4q9t0r"
+    },
+    {
+      "source": "1:fysf88qjj",
+      "name": "Action / Refresh",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:fm6tnot1e"
+    },
+    {
+      "source": "1:ciaefaqjj",
+      "name": "Action / Live imports",
+      "to": "liveimports",
+      "action": "navigateTo",
+      "id": "int:i43l87t1y"
+    },
+    {
+      "source": "1:bcnnocqjj",
+      "name": "Action / Import options",
+      "to": "import-options",
+      "action": "openOverlay",
+      "id": "int:63p8oot2b"
+    },
+    {
+      "source": "1:74qn2rqjt",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:ec0qsmt2s"
+    },
+    {
+      "source": "1:8z0uwyqjt",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:uk6iaht35"
+    },
+    {
+      "source": "1:5lvxoeqjt",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:6fzgu1t3h"
+    },
+    {
+      "source": "1:bh7ltsqjt",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:cnreact40"
+    },
+    {
+      "source": "1:j3il0aqjt",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:o199int4l"
+    },
+    {
+      "source": "1:352ff2qjt",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:qgyagct5n"
+    },
+    {
+      "source": "1:aam2s1qjt",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:fs79o8t6z"
+    },
+    {
+      "source": "1:ldwpywqjt",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:ul36e0t7b"
+    },
+    {
+      "source": "1:qdhwqeqjt",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:26p16et7r"
+    },
+    {
+      "source": "1:p9s8g9qjt",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:pdkysot85"
+    },
+    {
+      "source": "1:153f1mqjt",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:19cym4t8i"
+    },
+    {
+      "source": "1:jf8xx1qjt",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:jdg45nt8u"
+    },
+    {
+      "source": "1:98hmhbqjt",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:9d76s0t95"
+    },
+    {
+      "source": "1:elk7hlqjt",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:hz5v11t9e"
+    },
+    {
+      "source": "1:0nvswgqjt",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:11afqpta3"
+    },
+    {
+      "source": "1:bh2a7eqjt",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:ixjtjitah"
+    },
+    {
+      "source": "1:qmhiroqjt",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:oth00utat"
+    },
+    {
+      "source": "1:lrjighqjt",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:fu80aptb7"
+    },
+    {
+      "source": "1:ntlj9aqjt",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:1jcscptbn"
+    },
+    {
+      "source": "1:0yyw83qjt",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:5zx93ltc1"
+    },
+    {
+      "source": "1:5xvmf1qjt",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:q5z107tci"
+    },
+    {
+      "source": "1:bmpcktqjt",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:5hh7sotd0"
+    },
+    {
+      "source": "1:tsholxqjt",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:2doxj1te4"
+    },
+    {
+      "source": "1:qbgx1qqjt",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:r55eumten"
+    },
+    {
+      "source": "1:m7x9jhqjt",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:iq186etf0"
+    },
+    {
+      "source": "1:aiigi2qjt",
+      "name": "Text / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:ivh1zctf8"
+    },
+    {
+      "source": "1:px4nt9qjt",
+      "name": "Filter / rows",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:43clnmtfs"
+    },
+    {
+      "source": "1:gfx81dqjt",
+      "name": "Action / Refresh",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:e0cl4btgc"
+    },
+    {
+      "source": "1:uvxfl6qjt",
+      "name": "Action / Rebuild with imports",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:brlbrztgr"
+    },
+    {
+      "source": "1:5kmg4xqjt",
+      "name": "Action / Static imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:kfyq2oth3"
+    },
+    {
+      "source": "1:gwmh8dqk0",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:9b8dqothj"
+    },
+    {
+      "source": "1:4h3kchqk0",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:c78xwkthw"
+    },
+    {
+      "source": "1:hmqsi1qk0",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:avkkv8tib"
+    },
+    {
+      "source": "1:27lhxlqk0",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:7ricgstio"
+    },
+    {
+      "source": "1:6jia7vqk0",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:bw4khotj0"
+    },
+    {
+      "source": "1:yydiuiqk0",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:wbhg1ztjm"
+    },
+    {
+      "source": "1:00a1d8qk0",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:cxlho7tju"
+    },
+    {
+      "source": "1:6pceioqk0",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:r8int5tk6"
+    },
+    {
+      "source": "1:40fwjoqk0",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:agohhstkp"
+    },
+    {
+      "source": "1:3wh9ixqk0",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:is4o3rtl6"
+    },
+    {
+      "source": "1:d7qli8qk0",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:1lturwtlj"
+    },
+    {
+      "source": "1:4fuzhsqk0",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:14drfstm0"
+    },
+    {
+      "source": "1:utquc3qk0",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:z0cportmi"
+    },
+    {
+      "source": "1:bmobsoqk0",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:wbd68ntmw"
+    },
+    {
+      "source": "1:6t8o8lqk0",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:9szqxitng"
+    },
+    {
+      "source": "1:ealr7cqk0",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:wb2vazto0"
+    },
+    {
+      "source": "1:6ohw9kqk0",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:hjwfzstod"
+    },
+    {
+      "source": "1:4ixinyqk0",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:mg5sartor"
+    },
+    {
+      "source": "1:93o1a1qk0",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:bvaeootpe"
+    },
+    {
+      "source": "1:h6glluqk0",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:vxj3o1tpt"
+    },
+    {
+      "source": "1:fsu2pjqk0",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:6jt5jotq7"
+    },
+    {
+      "source": "1:bih4ipqk0",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:0tb31ktqk"
+    },
+    {
+      "source": "1:ee1hwbqk0",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:m1urfutqw"
+    },
+    {
+      "source": "1:cwbsi1qk0",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:d18orntrd"
+    },
+    {
+      "source": "1:pi3berqk0",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:826bkstrs"
+    },
+    {
+      "source": "1:0vqe4uqk0",
+      "name": "Filter / rows",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:oosbotts1"
+    },
+    {
+      "source": "1:0i9ybaqk0",
+      "name": "Action / Refresh",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:co2v6rtsh"
+    },
+    {
+      "source": "1:4kv61qqk0",
+      "name": "Action / Inject DLL",
+      "to": "inject",
+      "action": "openOverlay",
+      "id": "int:7duajxtsw"
+    },
+    {
+      "source": "1:dbyjs3qk0",
+      "name": "Action / Agent details",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:apjpe9ttj"
+    },
+    {
+      "source": "1:qkuu5bqk8",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:3hdexctu3"
+    },
+    {
+      "source": "1:855dfdqk8",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:hcmrr2tup"
+    },
+    {
+      "source": "1:no6lw4qk8",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:0hwf0vtv2"
+    },
+    {
+      "source": "1:0bo370qk8",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:odptbotvj"
+    },
+    {
+      "source": "1:71189lqk8",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:8uuylrtw6"
+    },
+    {
+      "source": "1:dg37q5qk8",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:75cifmtwu"
+    },
+    {
+      "source": "1:6khl62qk8",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:xfdqpgtxc"
+    },
+    {
+      "source": "1:sacucbqk8",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:36ssentxq"
+    },
+    {
+      "source": "1:kv872gqk8",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:7bddyjty2"
+    },
+    {
+      "source": "1:b2b6rpqk8",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:i45qc0tyi"
+    },
+    {
+      "source": "1:3dx0g5qk8",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:53jarqtyw"
+    },
+    {
+      "source": "1:h68ktvqk8",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:7cfgwatza"
+    },
+    {
+      "source": "1:180eteqk8",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:b9i6igtzp"
+    },
+    {
+      "source": "1:xivpchqk8",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:ikbompu03"
+    },
+    {
+      "source": "1:tm24xmqk8",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:kxv3rlu0g"
+    },
+    {
+      "source": "1:hcpyg7qk8",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:cln2lcu0s"
+    },
+    {
+      "source": "1:x9c55vqk8",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:1qftkku14"
+    },
+    {
+      "source": "1:rasrinqk8",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:mdwbjpu1k"
+    },
+    {
+      "source": "1:igoe6rqk8",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:r93lhru1z"
+    },
+    {
+      "source": "1:hblmp0qk8",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:rwdligu2d"
+    },
+    {
+      "source": "1:kuxw3pqk8",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:yjkh39u2s"
+    },
+    {
+      "source": "1:19rrsbqk8",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:lnb85zu34"
+    },
+    {
+      "source": "1:7qb1omqk8",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:2mlu5gu3k"
+    },
+    {
+      "source": "1:h62k7fqk8",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:u8kefuu44"
+    },
+    {
+      "source": "1:p0kdjxqk8",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:oz71g7u4m"
+    },
+    {
+      "source": "1:fjxavcqk8",
+      "name": "Action / Read memory",
+      "to": "hex-read",
+      "action": "navigateTo",
+      "id": "int:d3rknku57"
+    },
+    {
+      "source": "1:mj0x87qk8",
+      "name": "Action / Write memory",
+      "to": "write",
+      "action": "openOverlay",
+      "id": "int:luj89yu5v"
+    },
+    {
+      "source": "1:4e84zdqk8",
+      "name": "Action / Hex watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:ync8hxu6a"
+    },
+    {
+      "source": "1:48ba01qk8",
+      "name": "Action / Hex region",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:zf2gq9u6u"
+    },
+    {
+      "source": "1:5jur20qkc",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:3v5fjnu7e"
+    },
+    {
+      "source": "1:5lajiqqkc",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:nlnd1pu7y"
+    },
+    {
+      "source": "1:m90004qkc",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:7i4g1ou8j"
+    },
+    {
+      "source": "1:1dh5x1qkc",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:kkkhq0u90"
+    },
+    {
+      "source": "1:j46lsbqkc",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:bgmz2gu9f"
+    },
+    {
+      "source": "1:g55qibqkc",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:83g818u9u"
+    },
+    {
+      "source": "1:nw0hujqkc",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:kzdk44ua7"
+    },
+    {
+      "source": "1:8iiho6qkc",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:68w5iruaj"
+    },
+    {
+      "source": "1:elq59dqkc",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:tpxncxuax"
+    },
+    {
+      "source": "1:js2hp2qkc",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:j0yzznubi"
+    },
+    {
+      "source": "1:7k5exyqkc",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:cnup83ubx"
+    },
+    {
+      "source": "1:zpvgx4qkc",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:obovuquce"
+    },
+    {
+      "source": "1:nytxriqkc",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:wrs8frucz"
+    },
+    {
+      "source": "1:ec39n6qkc",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:45dn0kudb"
+    },
+    {
+      "source": "1:qiamtmqkc",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:evvghuudp"
+    },
+    {
+      "source": "1:57s8heqkc",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:vpa7pmue4"
+    },
+    {
+      "source": "1:lgb8dxqkc",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:momn4muem"
+    },
+    {
+      "source": "1:mwvyjjqkc",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:gn8icvueu"
+    },
+    {
+      "source": "1:kmrn92qkc",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:69ffajufa"
+    },
+    {
+      "source": "1:xylpsuqkc",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:2koqw4ufr"
+    },
+    {
+      "source": "1:fkajybqkc",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:b9l5cyuga"
+    },
+    {
+      "source": "1:ukukynqkc",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:1jtn9lugo"
+    },
+    {
+      "source": "1:f6aiigqkc",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:6rfnwbuh4"
+    },
+    {
+      "source": "1:s640itqkc",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:1fb5t0uht"
+    },
+    {
+      "source": "1:acflemqkc",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:96u0upui9"
+    },
+    {
+      "source": "1:hnksawqkc",
+      "name": "Action / Return hex",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:ung3aduin"
+    },
+    {
+      "source": "1:ies9b9qki",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:dqct12uj0"
+    },
+    {
+      "source": "1:yu5a4tqki",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:9wpp58ujc"
+    },
+    {
+      "source": "1:l8b2l4qki",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:a16y57ujr"
+    },
+    {
+      "source": "1:oojaknqki",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:zjcwn8ukb"
+    },
+    {
+      "source": "1:7oyxc5qki",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:x4t3r2uky"
+    },
+    {
+      "source": "1:nnoy71qki",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:utf52qulc"
+    },
+    {
+      "source": "1:ufhx1nqki",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:yfdyhpulo"
+    },
+    {
+      "source": "1:mu90qdqki",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:s9zc99um8"
+    },
+    {
+      "source": "1:qj6bu7qki",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:axoo2fumq"
+    },
+    {
+      "source": "1:xfsgd1qki",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:pyq5qwund"
+    },
+    {
+      "source": "1:wo6sh9qki",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:qz8kd4uo2"
+    },
+    {
+      "source": "1:ciz2i4qki",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:pvwx29uol"
+    },
+    {
+      "source": "1:bcq91sqki",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:lh3tzauot"
+    },
+    {
+      "source": "1:0z9ev5qki",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:97ed4jup5"
+    },
+    {
+      "source": "1:mteiwvqki",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:jp2hz4upo"
+    },
+    {
+      "source": "1:yw9vzdqki",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:dwho1iuq7"
+    },
+    {
+      "source": "1:fk3shnqki",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:tao17nuqp"
+    },
+    {
+      "source": "1:4u2hwxqki",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:rxhjrkur8"
+    },
+    {
+      "source": "1:syji4nqki",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:2fhq3eus0"
+    },
+    {
+      "source": "1:s5ugmjqki",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:snc0yyusm"
+    },
+    {
+      "source": "1:83wqpwqki",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:sdmubvutb"
+    },
+    {
+      "source": "1:dnlukkqki",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:1pzxbbuu5"
+    },
+    {
+      "source": "1:rkaty3qki",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:htd60euuo"
+    },
+    {
+      "source": "1:vumit8qki",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:ll2jd2uv5"
+    },
+    {
+      "source": "1:p8mvccqki",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:bhdrt6uvp"
+    },
+    {
+      "source": "1:kd4cqkqki",
+      "name": "Filter / rows",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:rb4mkjuw6"
+    },
+    {
+      "source": "1:2ilvyhqki",
+      "name": "Action / Refresh",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:rcm06quwt"
+    },
+    {
+      "source": "1:crfum0qki",
+      "name": "Action / Window refresh",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:lzv17zuxp"
+    },
+    {
+      "source": "1:3t6dgjqki",
+      "name": "Action / Window report",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:uxdy91uyi"
+    },
+    {
+      "source": "1:3c2y0tqko",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:5dws2fuz0"
+    },
+    {
+      "source": "1:91cht8qko",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:1fuocxuzf"
+    },
+    {
+      "source": "1:qm8393qko",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:8ukjkrv08"
+    },
+    {
+      "source": "1:sismnfqko",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:9xzv3av0o"
+    },
+    {
+      "source": "1:3rjd2lqko",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:hnej19v0w"
+    },
+    {
+      "source": "1:l7079lqko",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:9vm543v1f"
+    },
+    {
+      "source": "1:rzvziaqko",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:99hi6iv1q"
+    },
+    {
+      "source": "1:r0qythqko",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:67cf3gv25"
+    },
+    {
+      "source": "1:l84ysjqko",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:rwzdzfv2n"
+    },
+    {
+      "source": "1:wgole5qko",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:5qyh4vv38"
+    },
+    {
+      "source": "1:bgq7koqko",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:vpo6jev3k"
+    },
+    {
+      "source": "1:rdusq8qko",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:5hjumkv46"
+    },
+    {
+      "source": "1:91khcbqko",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:gl07l7v4u"
+    },
+    {
+      "source": "1:36qwldqko",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:7f7j23v5f"
+    },
+    {
+      "source": "1:s9wszaqko",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:crturqv5z"
+    },
+    {
+      "source": "1:rgqe4sqko",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:29rvpyv70"
+    },
+    {
+      "source": "1:ptwa7zqko",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:uq38ybv7w"
+    },
+    {
+      "source": "1:1ooq96qko",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:dt9fwyv8i"
+    },
+    {
+      "source": "1:usrnvoqko",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:x15oe2v8x"
+    },
+    {
+      "source": "1:b8ae1sqko",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:1t4p4eva2"
+    },
+    {
+      "source": "1:mgjr6oqko",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:60w8jivb8"
+    },
+    {
+      "source": "1:vlze07qko",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:2tl91ivbz"
+    },
+    {
+      "source": "1:fsnvehqko",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:4zwmnmvch"
+    },
+    {
+      "source": "1:0u0d8uqko",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:t0mrecvcw"
+    },
+    {
+      "source": "1:0detwjqko",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:t63l89vda"
+    },
+    {
+      "source": "1:u8prwgqko",
+      "name": "Action / Agent reload",
+      "to": "inject",
+      "action": "openOverlay",
+      "id": "int:p1i060vdo"
+    },
+    {
+      "source": "1:p6oi6mqko",
+      "name": "Action / Agent refresh",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:f1n8ebve1"
+    },
+    {
+      "source": "1:24k7kjqks",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:y06lg9vef"
+    },
+    {
+      "source": "1:cfm8yrqks",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:txy2byvez"
+    },
+    {
+      "source": "1:bweodnqks",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:40hmyzvf7"
+    },
+    {
+      "source": "1:cns8tlqks",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:l6k133vfn"
+    },
+    {
+      "source": "1:8yz04rqks",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:f6ua4svg2"
+    },
+    {
+      "source": "1:ge038pqks",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:8p2oqjvgg"
+    },
+    {
+      "source": "1:4mgg6aqks",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:31phk7vgw"
+    },
+    {
+      "source": "1:s4rcosqks",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:psd6k1vhf"
+    },
+    {
+      "source": "1:so16i2qks",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:4n1dfivhs"
+    },
+    {
+      "source": "1:luye17qks",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:e8dxqvvi7"
+    },
+    {
+      "source": "1:xq9hdqqks",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:vjs4kfvim"
+    },
+    {
+      "source": "1:39ud7cqks",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:rodmpevj3"
+    },
+    {
+      "source": "1:ao3ib7qks",
+      "name": "Action / Stop",
+      "to": "watch-stopped",
+      "action": "navigateTo",
+      "id": "int:woeud5vji"
+    },
+    {
+      "source": "1:7rxyyfqks",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:5bo2h1vk0"
+    },
+    {
+      "source": "1:jbltcvqks",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:raf7alvke"
+    },
+    {
+      "source": "1:w1bxnaqks",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:hbypyjvkr"
+    },
+    {
+      "source": "1:ioa4o7qks",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:vkitenvl5"
+    },
+    {
+      "source": "1:ts89pjqks",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:gig2wrvlm"
+    },
+    {
+      "source": "1:4gu3muqks",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:8v028bvm2"
+    },
+    {
+      "source": "1:224zrnqks",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:2kr2rsvml"
+    },
+    {
+      "source": "1:lfekivqks",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:6p8wijvn9"
+    },
+    {
+      "source": "1:wtcpquqks",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:f19x8gvnq"
+    },
+    {
+      "source": "1:oljedaqks",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:iefipdvo7"
+    },
+    {
+      "source": "1:p8onxeqks",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:2fj3w4voo"
+    },
+    {
+      "source": "1:4hhrgbqks",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:gpilbbvp8"
+    },
+    {
+      "source": "1:ru1ovoqks",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:nilpqgvpn"
+    },
+    {
+      "source": "1:qv3qdcqks",
+      "name": "Action / Watch options",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:4nq81jvq8"
+    },
+    {
+      "source": "1:vhejnxqks",
+      "name": "Action / Stop watch",
+      "to": "watch-stopped",
+      "action": "navigateTo",
+      "id": "int:xv2ylkvqn"
+    },
+    {
+      "source": "1:nxtp6bqks",
+      "name": "Action / Watch hex",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:3yb0rcvr4"
+    },
+    {
+      "source": "1:5ju5qdqks",
+      "name": "Action / Watch snapshot",
+      "to": "snapshot",
+      "action": "openOverlay",
+      "id": "int:ca7oq4vrr"
+    },
+    {
+      "source": "1:k7f4t1qkz",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:tavcvrvs1"
+    },
+    {
+      "source": "1:x80q23qkz",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:g5x9znvsh"
+    },
+    {
+      "source": "1:tg20t1qkz",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:cbwqa2vt5"
+    },
+    {
+      "source": "1:vow66aqkz",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:amdh9ovtf"
+    },
+    {
+      "source": "1:chwdorqkz",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:r5p80bvu0"
+    },
+    {
+      "source": "1:z40ggyqkz",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:k6iyf4vui"
+    },
+    {
+      "source": "1:a9oda1qkz",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:df2ckcvv0"
+    },
+    {
+      "source": "1:h5lxxzqkz",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:794jzqvvl"
+    },
+    {
+      "source": "1:cqm376qkz",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:38f8ncvwk"
+    },
+    {
+      "source": "1:iyerjtqkz",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:ft8uutvxh"
+    },
+    {
+      "source": "1:uux0vrqkz",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:bbjefwvya"
+    },
+    {
+      "source": "1:cm6d4yqkz",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:gob34bvz1"
+    },
+    {
+      "source": "1:uje9eqqkz",
+      "name": "Action / Stop",
+      "to": "watch-stopped",
+      "action": "navigateTo",
+      "id": "int:barad5vzc"
+    },
+    {
+      "source": "1:u58km7qkz",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:9z5yo8vzq"
+    },
+    {
+      "source": "1:sy1tewqkz",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:hfobhaw09"
+    },
+    {
+      "source": "1:6znbnwqkz",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:cznb7fw0j"
+    },
+    {
+      "source": "1:7c4cylqkz",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:gx0upaw15"
+    },
+    {
+      "source": "1:g58udiqkz",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:9vfw9zw1o"
+    },
+    {
+      "source": "1:4ryb0pqkz",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:7o4t8mw2e"
+    },
+    {
+      "source": "1:0ec8oxqkz",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:t3oj7mw31"
+    },
+    {
+      "source": "1:v9gtqvqkz",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:rsel8ww3u"
+    },
+    {
+      "source": "1:jhfl5mqkz",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:760m90w5i"
+    },
+    {
+      "source": "1:osxotgqkz",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:sq0tj1w6j"
+    },
+    {
+      "source": "1:8lcy1qqkz",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:l09iydw75"
+    },
+    {
+      "source": "1:lkvk6vqkz",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:wxc79tw7u"
+    },
+    {
+      "source": "1:bbec9kqkz",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:7fcyrlw84"
+    },
+    {
+      "source": "1:dpjqn0qkz",
+      "name": "Action / Restart watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:73jptyw8m"
+    },
+    {
+      "source": "1:k64ivyqkz",
+      "name": "Action / Watch log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:xx6l7sw8v"
+    },
+    {
+      "source": "1:ynab7mql6",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:1t31zuw9a"
+    },
+    {
+      "source": "1:agtn8rql6",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:e73nnmw9p"
+    },
+    {
+      "source": "1:1bqwkeql6",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:h4vq42wa4"
+    },
+    {
+      "source": "1:n8gmwbql6",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:dzcta6waj"
+    },
+    {
+      "source": "1:hh5uueql6",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:jnqyalwb1"
+    },
+    {
+      "source": "1:r2foubql6",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:ac1836wbh"
+    },
+    {
+      "source": "1:conrpzql6",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:rwwppbwby"
+    },
+    {
+      "source": "1:ha1otxql6",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:usfgtawcd"
+    },
+    {
+      "source": "1:pvcz80ql6",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:3psry6wct"
+    },
+    {
+      "source": "1:udaxrkql6",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:eixdmcwd8"
+    },
+    {
+      "source": "1:o2qbf2ql6",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:ywve00wdr"
+    },
+    {
+      "source": "1:ygjc0kql6",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:rchwqpwe8"
+    },
+    {
+      "source": "1:jeub5fql6",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:to7p3qwes"
+    },
+    {
+      "source": "1:xafpqiql6",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:c4mswdwfe"
+    },
+    {
+      "source": "1:6cwg1hql6",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:ngfw19wfw"
+    },
+    {
+      "source": "1:lo5tp5ql6",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:u0qz66wgn"
+    },
+    {
+      "source": "1:ab03ktql6",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:znfovkwh8"
+    },
+    {
+      "source": "1:bsqdqeql6",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:jtmyptwhw"
+    },
+    {
+      "source": "1:gl4b6xql6",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:cwpqagwih"
+    },
+    {
+      "source": "1:l1exoeql6",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:c7g5aywj0"
+    },
+    {
+      "source": "1:lpt25vql6",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:4mftglwjo"
+    },
+    {
+      "source": "1:b4yubqql6",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:s63uuuwkl"
+    },
+    {
+      "source": "1:yn1cmgql7",
+      "name": "Action / Analyze",
+      "to": "analysis-options",
+      "action": "openOverlay",
+      "id": "int:djeqokwlg"
+    },
+    {
+      "source": "1:z1z8ulqld",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:purvf2wm1"
+    },
+    {
+      "source": "1:af0xuwqld",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:uk2dsewml"
+    },
+    {
+      "source": "1:ji2636qld",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:lvpanfwn1"
+    },
+    {
+      "source": "1:xs3bdeqld",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:74uwzmwnk"
+    },
+    {
+      "source": "1:6uyllmqld",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:ey2d9iwoh"
+    },
+    {
+      "source": "1:4g24gsqld",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:as6b8lwp2"
+    },
+    {
+      "source": "1:55at8tqld",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:9q12a3wph"
+    },
+    {
+      "source": "1:m6scejqld",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:cg4ts4wpy"
+    },
+    {
+      "source": "1:4ucob4qld",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:vzr9jqwqq"
+    },
+    {
+      "source": "1:e4m79qqld",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:d8ac1qwr7"
+    },
+    {
+      "source": "1:x9dlg7qld",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:21ysr8wrv"
+    },
+    {
+      "source": "1:2j61w0qld",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:m7g9ocwsp"
+    },
+    {
+      "source": "1:4akzqvqld",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:8mskcrwtj"
+    },
+    {
+      "source": "1:tfps6iqld",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:wqfqq5wu3"
+    },
+    {
+      "source": "1:pu7bwrqld",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:i850x5wut"
+    },
+    {
+      "source": "1:0equ9uqld",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:k8evttwvo"
+    },
+    {
+      "source": "1:aj32q5qld",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:dg594cwwu"
+    },
+    {
+      "source": "1:emgqkyqld",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:jera0cwxr"
+    },
+    {
+      "source": "1:ylain3qld",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:7sfxs0wyk"
+    },
+    {
+      "source": "1:fqv3nuqld",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:wp8hatx08"
+    },
+    {
+      "source": "1:e4iippqld",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:tklgmox19"
+    },
+    {
+      "source": "1:hmopu3qld",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:h84pi8x22"
+    },
+    {
+      "source": "1:phrs4eqld",
+      "name": "Action / Analysis reports",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:8j6nxqx2v"
+    },
+    {
+      "source": "1:xkvzkzqld",
+      "name": "Action / Analysis rerun",
+      "to": "analysis-options",
+      "action": "openOverlay",
+      "id": "int:karvibx3t"
+    },
+    {
+      "source": "1:92yjo5qlk",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:i8shyjx4c"
+    },
+    {
+      "source": "1:islh0lqlk",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:y1a441x4y"
+    },
+    {
+      "source": "1:fmnnbhqlk",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:l9djcxx5n"
+    },
+    {
+      "source": "1:sxnn8gqlk",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:vmxz4wx6d"
+    },
+    {
+      "source": "1:s1e0p6qlk",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:fl7obax6y"
+    },
+    {
+      "source": "1:wb2tnhqlk",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:0qco9xx7f"
+    },
+    {
+      "source": "1:70x5yvqlk",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:s69nywx7w"
+    },
+    {
+      "source": "1:l3z3kbqlk",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:obnme2x8a"
+    },
+    {
+      "source": "1:bv461sqlk",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:dd6m36x9d"
+    },
+    {
+      "source": "1:aaw2gvqlk",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:znu1sdxak"
+    },
+    {
+      "source": "1:5i3i8wqlk",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:c5wyjrxb2"
+    },
+    {
+      "source": "1:4ilzqnqlk",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:27y7xqxbo"
+    },
+    {
+      "source": "1:mgo13jqlk",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:jqlxt5xch"
+    },
+    {
+      "source": "1:33vlebqlk",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:mygyu7xd3"
+    },
+    {
+      "source": "1:fmqu75qlk",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:r71of7xdp"
+    },
+    {
+      "source": "1:n61k2uqlk",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:g9abuzxej"
+    },
+    {
+      "source": "1:peqpveqlk",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:qo07xtxf8"
+    },
+    {
+      "source": "1:o70c76qlk",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:oit87xxfq"
+    },
+    {
+      "source": "1:s9fwozqlk",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:hwj6n3xg7"
+    },
+    {
+      "source": "1:jodfvkqlk",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:50nmklxgj"
+    },
+    {
+      "source": "1:crs8c7qlk",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:2ytixhxh5"
+    },
+    {
+      "source": "1:rdre03qlk",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:22xnurxhp"
+    },
+    {
+      "source": "1:gxhi1eqlk",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:uw8b1bxih"
+    },
+    {
+      "source": "1:k05puxqlk",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:ksvqloxix"
+    },
+    {
+      "source": "1:fe5ljbqlk",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:92rjb7xji"
+    },
+    {
+      "source": "1:bmbmvvqlk",
+      "name": "Filter / rows",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:ezedcfxkl"
+    },
+    {
+      "source": "1:1fo2rdqlk",
+      "name": "Action / Refresh",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:2s3nb4xlo"
+    },
+    {
+      "source": "1:jiork9qlk",
+      "name": "Action / Log export",
+      "to": "export",
+      "action": "openOverlay",
+      "id": "int:uqdvfoxmc"
+    },
+    {
+      "source": "1:qrevrzqlk",
+      "name": "Action / Log clear",
+      "to": "clear-log",
+      "action": "openOverlay",
+      "id": "int:s7tmv8xn2"
+    },
+    {
+      "source": "1:mfovpjqlr",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:nvgk9rxnr"
+    },
+    {
+      "source": "1:8my77jqlr",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:6o3tfbxok"
+    },
+    {
+      "source": "1:x2p3cpqlr",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:cdig1cxp5"
+    },
+    {
+      "source": "1:dvh8hpqlr",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:ta6sxdxpr"
+    },
+    {
+      "source": "1:bwnbgfqlr",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:clxol9xqf"
+    },
+    {
+      "source": "1:uhpowsqlr",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:6ftfcixrg"
+    },
+    {
+      "source": "1:4nnqhqqlr",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:tpcmdixs9"
+    },
+    {
+      "source": "1:5ullpqqlr",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:7lzmunxst"
+    },
+    {
+      "source": "1:zbd271qlr",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:8dh5erxth"
+    },
+    {
+      "source": "1:cisz2gqlr",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:6dwkn7xu8"
+    },
+    {
+      "source": "1:bgx4leqlr",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:dbpb5gxv0"
+    },
+    {
+      "source": "1:s84nl7qlr",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:0jeahoxw3"
+    },
+    {
+      "source": "1:1sa78fqlr",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:thd79vxx2"
+    },
+    {
+      "source": "1:gr0nvsqlr",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:obf5jfxxp"
+    },
+    {
+      "source": "1:84dxt3qlr",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:7kpf5dxyc"
+    },
+    {
+      "source": "1:rlykppqlr",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:64127kxz5"
+    },
+    {
+      "source": "1:pq486yqlr",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:4lu3rzxzu"
+    },
+    {
+      "source": "1:bk8d7iqlr",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:g3fendy0p"
+    },
+    {
+      "source": "1:3mxuh9qlr",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:xl0akoy18"
+    },
+    {
+      "source": "1:xmi3biqlr",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:hd5kkmy1w"
+    },
+    {
+      "source": "1:zsiencqlr",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:ixprouy2f"
+    },
+    {
+      "source": "1:s4g030qlr",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:97e8z9y2w"
+    },
+    {
+      "source": "1:k1y276qlr",
+      "name": "Empty / Open file",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:h9raxdy3i"
+    },
+    {
+      "source": "1:njfb4pqlr",
+      "name": "Empty / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:tgrafhy41"
+    },
+    {
+      "source": "1:ima39yqlr",
+      "name": "Empty / Recent target",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:1rhg3oy4o"
+    },
+    {
+      "source": "1:x6y4n1qlx",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:i7mnj0y5f"
+    },
+    {
+      "source": "1:qs6d2qqlx",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:kqtl3zy67"
+    },
+    {
+      "source": "1:gmx7ygqlx",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:gjkmxty77"
+    },
+    {
+      "source": "1:9nf64aqlx",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:tmg7eby99"
+    },
+    {
+      "source": "1:c1r0sdqlx",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:l6yua5yas"
+    },
+    {
+      "source": "1:hhd3auqlx",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:i34ciqyca"
+    },
+    {
+      "source": "1:c3aujnqlx",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:iixspvydp"
+    },
+    {
+      "source": "1:j2zg0aqlx",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:zqisf1yeh"
+    },
+    {
+      "source": "1:yu6kwzqlx",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:wvxr8syf1"
+    },
+    {
+      "source": "1:lc5ylxqlx",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:c9sa8byfm"
+    },
+    {
+      "source": "1:e3teslqlx",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:sf1w5vygc"
+    },
+    {
+      "source": "1:dqnozrqlx",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:arlaxyygw"
+    },
+    {
+      "source": "1:rmar1qqlx",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:udstscyhu"
+    },
+    {
+      "source": "1:gkaw89qlx",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:6aptdeyje"
+    },
+    {
+      "source": "1:exe52dqlx",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:lwrjqsykg"
+    },
+    {
+      "source": "1:yljaq8qlx",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:rg5lukylk"
+    },
+    {
+      "source": "1:eii4l3qlx",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:bz013pymh"
+    },
+    {
+      "source": "1:nf2hgeqlx",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:5l9umxync"
+    },
+    {
+      "source": "1:4x0m7bqlx",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:2mw8dtyo4"
+    },
+    {
+      "source": "1:jav4zlqlx",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:7q9uvpyow"
+    },
+    {
+      "source": "1:ho9rikqlx",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:msxbfzypp"
+    },
+    {
+      "source": "1:9frolpqlx",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:53kubnyqh"
+    },
+    {
+      "source": "1:7m79lkqlx",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:svaufsyr8"
+    },
+    {
+      "source": "1:drgr0lqlx",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:uwedj5yru"
+    },
+    {
+      "source": "1:1auu5bqlx",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:c9ie66ysi"
+    },
+    {
+      "source": "1:uwmtniqlx",
+      "name": "Text / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:kwpgv5yth"
+    },
+    {
+      "source": "1:fnyjg5qlx",
+      "name": "Action / Finish sample capture",
+      "to": "capture-result",
+      "action": "navigateTo",
+      "id": "int:a0at0pyui"
+    },
+    {
+      "source": "1:mr0leeqlx",
+      "name": "Action / Cancel capture",
+      "to": "cancel-task",
+      "action": "openOverlay",
+      "id": "int:3ti22ryvo"
+    },
+    {
+      "source": "1:fxmk8qqmb",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:7as052ywm"
+    },
+    {
+      "source": "1:a9sghaqmb",
+      "name": "Text / File",
+      "to": "file-menu",
+      "action": "openOverlay",
+      "id": "int:9gdc6eyxi"
+    },
+    {
+      "source": "1:5saairqmb",
+      "name": "Text / Edit",
+      "to": "edit-menu",
+      "action": "openOverlay",
+      "id": "int:5tpl3eyye"
+    },
+    {
+      "source": "1:l3iae8qmb",
+      "name": "Text / View",
+      "to": "view-menu",
+      "action": "openOverlay",
+      "id": "int:w6sjpoyz7"
+    },
+    {
+      "source": "1:vdh8lzqmb",
+      "name": "Text / Capture",
+      "to": "capture-menu",
+      "action": "openOverlay",
+      "id": "int:xh20ftz0j"
+    },
+    {
+      "source": "1:abwda1qmb",
+      "name": "Text / Tools",
+      "to": "tools-menu",
+      "action": "openOverlay",
+      "id": "int:z8qcauz1m"
+    },
+    {
+      "source": "1:9v8o55qmb",
+      "name": "Text / Help",
+      "to": "help-menu",
+      "action": "openOverlay",
+      "id": "int:e5agvmz2i"
+    },
+    {
+      "source": "1:7aomlrqmb",
+      "name": "Action / Open",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:ajvpqnz33"
+    },
+    {
+      "source": "1:vy9czgqmb",
+      "name": "Action / Attach",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:6075ggz3l"
+    },
+    {
+      "source": "1:9waz7iqmb",
+      "name": "Action / Dump",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:t15spzz4c"
+    },
+    {
+      "source": "1:gw3tx2qmb",
+      "name": "Action / Rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:sl0awvz4u"
+    },
+    {
+      "source": "1:ujwk25qmb",
+      "name": "Action / Watch",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:3khfx3z5b"
+    },
+    {
+      "source": "1:6gau2vqmb",
+      "name": "Nav / Overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:fa8sljz5z"
+    },
+    {
+      "source": "1:kft7wqqmb",
+      "name": "Nav / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:dbhyljz6i"
+    },
+    {
+      "source": "1:edarccqmb",
+      "name": "Nav / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:qto1bdz75"
+    },
+    {
+      "source": "1:ihfrqqqmb",
+      "name": "Nav / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:8bds5ez7o"
+    },
+    {
+      "source": "1:2kg7yyqmb",
+      "name": "Nav / Memory",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:jpks6ez8m"
+    },
+    {
+      "source": "1:4yzuezqmb",
+      "name": "Nav / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:qf3u6yz9j"
+    },
+    {
+      "source": "1:lnj7haqmb",
+      "name": "Nav / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:s61caazaj"
+    },
+    {
+      "source": "1:3n8uwfqmb",
+      "name": "Nav / Agent",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:dnn67dzbz"
+    },
+    {
+      "source": "1:h225osqmb",
+      "name": "Nav / Watch",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:38ylmrzda"
+    },
+    {
+      "source": "1:dnjkiiqmb",
+      "name": "Nav / Analysis",
+      "to": "analysis",
+      "action": "navigateTo",
+      "id": "int:5qt872ze4"
+    },
+    {
+      "source": "1:iiz0m6qmb",
+      "name": "Nav / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:u54uihzg3"
+    },
+    {
+      "source": "1:5896spqmb",
+      "name": "Nav / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:3iayfjzht"
+    },
+    {
+      "source": "1:g4zxqnqmb",
+      "name": "Action / Settings",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:bp1nd7zin"
+    },
+    {
+      "source": "1:wwgrrfqmb",
+      "name": "Text / Artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:7htuhrzjz"
+    },
+    {
+      "source": "1:ozrz0cqmb",
+      "name": "Action / Capture rebuild",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:5mhmdwzkj"
+    },
+    {
+      "source": "1:tyttzdqmb",
+      "name": "Action / Capture artifacts",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:53rw51zkv"
+    },
+    {
+      "source": "1:wyr9krqmh",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:3df48hzlj"
+    },
+    {
+      "source": "1:adcaapqmh",
+      "name": "Browse / Executable",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:1sdh45zmi"
+    },
+    {
+      "source": "1:0tcm78qmh",
+      "name": "Cancel / open",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:a8z6hgzna"
+    },
+    {
+      "source": "1:0n9s80qmh",
+      "name": "Confirm / open",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:qj5twszof"
+    },
+    {
+      "source": "1:n3ch55qms",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:4zzkwzzqo"
+    },
+    {
+      "source": "1:sbpz4xqms",
+      "name": "Browse / Launch executable",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:3gk1zgzra"
+    },
+    {
+      "source": "1:41z2mwqms",
+      "name": "Toggle / Launch armor",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:0mihjnzzh"
+    },
+    {
+      "source": "1:d55fi1qms",
+      "name": "Cancel / launch",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:6uwni4027"
+    },
+    {
+      "source": "1:46dgzmqms",
+      "name": "Confirm / launch",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:xhit1u040"
+    },
+    {
+      "source": "1:kteh2fqmz",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:ebzyr5060"
+    },
+    {
+      "source": "1:ur86eyqmz",
+      "name": "Browse / Agent DLL",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:visaf007f"
+    },
+    {
+      "source": "1:blenm4qmz",
+      "name": "Cancel / inject",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:h6ae1t095"
+    },
+    {
+      "source": "1:yqecteqmz",
+      "name": "Confirm / inject",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:ff4hl00av"
+    },
+    {
+      "source": "1:46f3n2qn6",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:nwthfk0c4"
+    },
+    {
+      "source": "1:mltyl1qn6",
+      "name": "Browse / Dump output",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:h0fr730ck"
+    },
+    {
+      "source": "1:vmbp6gqn6",
+      "name": "Toggle / Force dump",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:jqqpbe0f8"
+    },
+    {
+      "source": "1:bs4iszqn6",
+      "name": "Cancel / dump",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:prj0mf0g2"
+    },
+    {
+      "source": "1:b3sky2qn6",
+      "name": "Confirm / dump",
+      "to": "busy",
+      "action": "navigateTo",
+      "id": "int:fkw13s0gd"
+    },
+    {
+      "source": "1:2l2vydqnc",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:r9rrlf0h7"
+    },
+    {
+      "source": "1:03a2lhqnc",
+      "name": "Browse / Snapshot output",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:pr9gja0hr"
+    },
+    {
+      "source": "1:qydwihqnc",
+      "name": "Toggle / All private",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:6sdubq0on"
+    },
+    {
+      "source": "1:2j9djkqnc",
+      "name": "Cancel / snapshot",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:malhtp0py"
+    },
+    {
+      "source": "1:g7acs8qnc",
+      "name": "Confirm / snapshot",
+      "to": "capture-result",
+      "action": "navigateTo",
+      "id": "int:x7xlgp0t9"
+    },
+    {
+      "source": "1:xxlv3oqnk",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:5xeg1g0tl"
+    },
+    {
+      "source": "1:0dcx6xqnk",
+      "name": "Browse / OEP output",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:7n59d40vv"
+    },
+    {
+      "source": "1:nsgpe4qnk",
+      "name": "Toggle / OEP launch",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:8kt71i165"
+    },
+    {
+      "source": "1:fea8m1qnk",
+      "name": "Cancel / oep",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:mirr4c17w"
+    },
+    {
+      "source": "1:g3co52qnk",
+      "name": "Confirm / oep",
+      "to": "busy",
+      "action": "navigateTo",
+      "id": "int:rdy1mw19i"
+    },
+    {
+      "source": "1:biqlbzqno",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:thogrh19y"
+    },
+    {
+      "source": "1:uebirrqno",
+      "name": "Browse / Write address",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:90h14g1al"
+    },
+    {
+      "source": "1:fqyi64qno",
+      "name": "Browse / Write bytes",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:abmd2q1az"
+    },
+    {
+      "source": "1:e37il0qno",
+      "name": "Cancel / write",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:m77iys1bp"
+    },
+    {
+      "source": "1:9g8esiqno",
+      "name": "Confirm / write",
+      "to": "write-result",
+      "action": "openOverlay",
+      "id": "int:vjytnh1cf"
+    },
+    {
+      "source": "1:6xohdlqny",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:ox4smo1d6"
+    },
+    {
+      "source": "1:onuyh9qny",
+      "name": "Cancel / write-result",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:bxrkgx1e0"
+    },
+    {
+      "source": "1:ud41hiqny",
+      "name": "Confirm / write-result",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:82rz621es"
+    },
+    {
+      "source": "1:ptt0yyqo5",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:f8nqgz1fm"
+    },
+    {
+      "source": "1:h5xug2qo5",
+      "name": "Toggle / Watch read",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:ja5t4g1la"
+    },
+    {
+      "source": "1:8f44ygqo5",
+      "name": "Toggle / Watch write",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:yyzr301wo"
+    },
+    {
+      "source": "1:r5085gqo5",
+      "name": "Toggle / Watch execute",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:wjrlq32dd"
+    },
+    {
+      "source": "1:kw2hflqo5",
+      "name": "Browse / Watch output",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:ub15pe2kh"
+    },
+    {
+      "source": "1:42ztsbqo5",
+      "name": "Browse / Watch capture",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:2a5qxz2nb"
+    },
+    {
+      "source": "1:7vw6yiqo5",
+      "name": "Toggle / Watch once",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:5tou4g2ub"
+    },
+    {
+      "source": "1:w0iea5qo5",
+      "name": "Cancel / watch-options",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:gzkyf32vb"
+    },
+    {
+      "source": "1:cfsseiqo5",
+      "name": "Confirm / watch-options",
+      "to": "watch",
+      "action": "navigateTo",
+      "id": "int:h81l3i2w2"
+    },
+    {
+      "source": "1:i0ve1kqoj",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:xhb6l02wr"
+    },
+    {
+      "source": "1:wo161iqoj",
+      "name": "Browse / Run exe",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:c7ggz52xn"
+    },
+    {
+      "source": "1:wb4g8nqoj",
+      "name": "Browse / Run snapshot",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:7xpiw72yi"
+    },
+    {
+      "source": "1:low7k1qoj",
+      "name": "Cancel / run",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:5jpix02yv"
+    },
+    {
+      "source": "1:7jusjhqoj",
+      "name": "Confirm / run",
+      "to": "artifacts",
+      "action": "navigateTo",
+      "id": "int:8wacl92z9"
+    },
+    {
+      "source": "1:i61234qop",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:f86j6l308"
+    },
+    {
+      "source": "1:euzq38qop",
+      "name": "Browse / Analysis live",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:8qw29530m"
+    },
+    {
+      "source": "1:ssfntuqop",
+      "name": "Browse / Analysis original",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:0trvfl31g"
+    },
+    {
+      "source": "1:grdpg0qop",
+      "name": "Browse / Analysis output",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:6oc1ej32c"
+    },
+    {
+      "source": "1:j29r42qop",
+      "name": "Toggle / Analysis strings",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:4a0zex396"
+    },
+    {
+      "source": "1:q659s6qop",
+      "name": "Cancel / analysis-options",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:qtc2ge3bi"
+    },
+    {
+      "source": "1:5ww3ayqop",
+      "name": "Confirm / analysis-options",
+      "to": "analysis-result",
+      "action": "navigateTo",
+      "id": "int:ps8fsv3du"
+    },
+    {
+      "source": "1:dfvgolqow",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:6doabr3g4"
+    },
+    {
+      "source": "1:38pm86qow",
+      "name": "Toggle / Import cast",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:9i1zo640t"
+    },
+    {
+      "source": "1:7nod95qow",
+      "name": "Cancel / import-options",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:27c23w44d"
+    },
+    {
+      "source": "1:tyl2g9qow",
+      "name": "Confirm / import-options",
+      "to": "liveimports",
+      "action": "navigateTo",
+      "id": "int:v7us5t472"
+    },
+    {
+      "source": "1:td53awqp4",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:lw4qz047m"
+    },
+    {
+      "source": "1:t4akdbqp4",
+      "name": "Toggle / Compact rows",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:hojwz04dj"
+    },
+    {
+      "source": "1:w0i0ddqp4",
+      "name": "Toggle / Output pane",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:flh0u14je"
+    },
+    {
+      "source": "1:70d2deqp4",
+      "name": "Toggle / Session log",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:lm86px5cm"
+    },
+    {
+      "source": "1:5rosgwqp4",
+      "name": "Browse / Settings output",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:a4ihpz5fv"
+    },
+    {
+      "source": "1:mrs3utqp4",
+      "name": "Cancel / settings",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:vp2y5q5h0"
+    },
+    {
+      "source": "1:wascfiqp4",
+      "name": "Confirm / settings",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:k709vn5hs"
+    },
+    {
+      "source": "1:a7rj4kqpb",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:ruvzkp5ib"
+    },
+    {
+      "source": "1:21bn9aqpb",
+      "name": "Cancel / error",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:e71zv05jc"
+    },
+    {
+      "source": "1:a0clkqqpb",
+      "name": "Confirm / error",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:ea4f7p5k1"
+    },
+    {
+      "source": "1:o5k007qpo",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:ywn1yk5ks"
+    },
+    {
+      "source": "1:h3dufbqpo",
+      "name": "Cancel / attach-incompatible",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:qm15l05lp"
+    },
+    {
+      "source": "1:qf5nphqpo",
+      "name": "Confirm / attach-incompatible",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:xy4jie5mx"
+    },
+    {
+      "source": "1:s3nyjpqpv",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:cxmcr25p0"
+    },
+    {
+      "source": "1:bsb2f5qpv",
+      "name": "Cancel / cancel-task",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:mdg6dn5qy"
+    },
+    {
+      "source": "1:twl2plqpv",
+      "name": "Confirm / cancel-task",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:9q9xop5sq"
+    },
+    {
+      "source": "1:yjwlluqq2",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:mnic465w4"
+    },
+    {
+      "source": "1:qjy4ubqq2",
+      "name": "Cancel / clear-log",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:9n5z115xz"
+    },
+    {
+      "source": "1:rpza54qq2",
+      "name": "Confirm / clear-log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:hube7s5zt"
+    },
+    {
+      "source": "1:kbi0k1qq8",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:tbivhj62l"
+    },
+    {
+      "source": "1:hbvopcqq8",
+      "name": "Browse / Export file",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:on7zdj64z"
+    },
+    {
+      "source": "1:jwah9fqq8",
+      "name": "Cancel / export",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:w2ndc5674"
+    },
+    {
+      "source": "1:5cjl7wqq8",
+      "name": "Confirm / export",
+      "to": "export-result",
+      "action": "openOverlay",
+      "id": "int:dnvn2f69e"
+    },
+    {
+      "source": "1:xuhu4tqqg",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:knetvo6c3"
+    },
+    {
+      "source": "1:iqo6o5qqg",
+      "name": "Cancel / export-result",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:klhorp6es"
+    },
+    {
+      "source": "1:rau4u8qqg",
+      "name": "Confirm / export-result",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:t1w7qi6gq"
+    },
+    {
+      "source": "1:6k8v2nqqn",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:l86skg6iq"
+    },
+    {
+      "source": "1:1xkcp8qqn",
+      "name": "Cancel / browse",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:v9m2g56kg"
+    },
+    {
+      "source": "1:g9j658qqn",
+      "name": "Confirm / browse",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:75m3c86lq"
+    },
+    {
+      "source": "1:hqr4r2qqv",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:of7zs16pu"
+    },
+    {
+      "source": "1:1zdovmqqv",
+      "name": "Cancel / about",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:o296b06s4"
+    },
+    {
+      "source": "1:9ccxj2qqv",
+      "name": "Confirm / about",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:c28jhz6um"
+    },
+    {
+      "source": "1:7rk3akqr2",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:tyxe8i6xf"
+    },
+    {
+      "source": "1:d1ihwfqr3",
+      "name": "Cancel / shortcuts",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:npn8bw71b"
+    },
+    {
+      "source": "1:yhwpdkqr3",
+      "name": "Confirm / shortcuts",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:p1up4z74j"
+    },
+    {
+      "source": "1:y79evaqrc",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:1ytp9p77m"
+    },
+    {
+      "source": "1:8lcmxlqrc",
+      "name": "Browse / Filter expression",
+      "to": "browse",
+      "action": "openOverlay",
+      "id": "int:fg1gkm7a8"
+    },
+    {
+      "source": "1:ignkrfqrc",
+      "name": "Cancel / filter",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:tp2z6w7cr"
+    },
+    {
+      "source": "1:rfdvc1qrc",
+      "name": "Confirm / filter",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:yqwm647ex"
+    },
+    {
+      "source": "1:hj2vuwqrj",
+      "name": "Icon / close",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:mon6jb7i3"
+    },
+    {
+      "source": "1:u1uarnqrj",
+      "name": "Toggle / Private regions",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:fkruk4816"
+    },
+    {
+      "source": "1:kdj315qrj",
+      "name": "Toggle / All regions",
+      "to": null,
+      "action": "setVariable",
+      "id": "int:2oev2l8fw"
+    },
+    {
+      "source": "1:3rryynqrj",
+      "name": "Cancel / memory-options",
+      "to": null,
+      "action": "closeOverlay",
+      "id": "int:2ia8ru8ha"
+    },
+    {
+      "source": "1:tush80qrj",
+      "name": "Confirm / memory-options",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:y7hu5e8i9"
+    },
+    {
+      "source": "1:uvxixfqrr",
+      "name": "Menu / Open executable…",
+      "to": "open",
+      "action": "openOverlay",
+      "id": "int:sbbyhg8j3"
+    },
+    {
+      "source": "1:6ko2b3qrr",
+      "name": "Menu / Launch target…",
+      "to": "launch",
+      "action": "openOverlay",
+      "id": "int:xpl7gs8k1"
+    },
+    {
+      "source": "1:z4rbqlqrr",
+      "name": "Menu / Attach to process…",
+      "to": "attach",
+      "action": "openOverlay",
+      "id": "int:lxpf6t8l1"
+    },
+    {
+      "source": "1:4plj80qrr",
+      "name": "Menu / Export session output…",
+      "to": "export",
+      "action": "openOverlay",
+      "id": "int:76bb948lu"
+    },
+    {
+      "source": "1:r80smfqrr",
+      "name": "Menu / Close target",
+      "to": "empty",
+      "action": "navigateTo",
+      "id": "int:jzw8t28m8"
+    },
+    {
+      "source": "1:6zn9qlqrw",
+      "name": "Menu / Filter rows…",
+      "to": "filter",
+      "action": "openOverlay",
+      "id": "int:y8ub3q8my"
+    },
+    {
+      "source": "1:8dwylgqrw",
+      "name": "Menu / Read memory…",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:3503c08nf"
+    },
+    {
+      "source": "1:xtckzsqrw",
+      "name": "Menu / Write memory…",
+      "to": "write",
+      "action": "openOverlay",
+      "id": "int:c4v4zv8o8"
+    },
+    {
+      "source": "1:uuz6xvqrw",
+      "name": "Menu / Workspace settings…",
+      "to": "settings",
+      "action": "openOverlay",
+      "id": "int:4bjaca8ol"
+    },
+    {
+      "source": "1:mlbsz2qs0",
+      "name": "Menu / Target overview",
+      "to": "overview",
+      "action": "navigateTo",
+      "id": "int:n7nm3i8pd"
+    },
+    {
+      "source": "1:3r0ftdqs0",
+      "name": "Menu / Sections",
+      "to": "sections",
+      "action": "navigateTo",
+      "id": "int:j3onhp8q5"
+    },
+    {
+      "source": "1:c22nryqs0",
+      "name": "Menu / Imports",
+      "to": "imports",
+      "action": "navigateTo",
+      "id": "int:z58pcm8r1"
+    },
+    {
+      "source": "1:d9hnn0qs0",
+      "name": "Menu / Modules",
+      "to": "modules",
+      "action": "navigateTo",
+      "id": "int:cl0k4q8ru"
+    },
+    {
+      "source": "1:1j5unoqs0",
+      "name": "Menu / Memory map",
+      "to": "memory",
+      "action": "navigateTo",
+      "id": "int:ntrm3l8s7"
+    },
+    {
+      "source": "1:zwanj2qs0",
+      "name": "Menu / Hex editor",
+      "to": "hex",
+      "action": "navigateTo",
+      "id": "int:j2x7qt8sj"
+    },
+    {
+      "source": "1:nal082qs0",
+      "name": "Menu / Windows",
+      "to": "windows",
+      "action": "navigateTo",
+      "id": "int:z2r80r8te"
+    },
+    {
+      "source": "1:r75bb3qs0",
+      "name": "Menu / Session log",
+      "to": "log",
+      "action": "navigateTo",
+      "id": "int:5aipns8tq"
+    },
+    {
+      "source": "1:qr222xqs7",
+      "name": "Menu / Capture mapped image…",
+      "to": "dump",
+      "action": "openOverlay",
+      "id": "int:msy0xa8uj"
+    },
+    {
+      "source": "1:g8xt82qs7",
+      "name": "Menu / Save private snapshot…",
+      "to": "snapshot",
+      "action": "openOverlay",
+      "id": "int:2rlnqb8uv"
+    },
+    {
+      "source": "1:j1iqb7qs7",
+      "name": "Menu / Entry-point capture…",
+      "to": "oep",
+      "action": "openOverlay",
+      "id": "int:6bkqq58v9"
+    },
+    {
+      "source": "1:i9b92kqs7",
+      "name": "Menu / Configure watch…",
+      "to": "watch-options",
+      "action": "openOverlay",
+      "id": "int:y0fb8m8w3"
+    },
+    {
+      "source": "1:srwlipqs7",
+      "name": "Menu / Stop watch",
+      "to": "watch-stopped",
+      "action": "navigateTo",
+      "id": "int:9x0vxn8wg"
+    },
+    {
+      "source": "1:319mrnqse",
+      "name": "Menu / Agent status",
+      "to": "agent",
+      "action": "navigateTo",
+      "id": "int:wzgzwu8x9"
+    },
+    {
+      "source": "1:anoercqse",
+      "name": "Menu / Load agent DLL…",
+      "to": "inject",
+      "action": "openOverlay",
+      "id": "int:hdtxpr8xm"
+    },
+    {
+      "source": "1:4ika2sqse",
+      "name": "Menu / Live imports",
+      "to": "liveimports",
+      "action": "navigateTo",
+      "id": "int:karuou8yj"
+    },
+    {
+      "source": "1:1vjlpoqse",
+      "name": "Menu / Rebuild PE image…",
+      "to": "rebuild",
+      "action": "openOverlay",
+      "id": "int:fikmj88yx"
+    },
+    {
+      "source": "1:pldotxqse",
+      "name": "Menu / Validate reconstructed image…",
+      "to": "run",
+      "action": "openOverlay",
+      "id": "int:xhyvl48zo"
+    },
+    {
+      "source": "1:l5cix4qse",
+      "name": "Menu / Offline analysis…",
+      "to": "analysis-options",
+      "action": "openOverlay",
+      "id": "int:rkqxyf902"
+    },
+    {
+      "source": "1:768dv5qsn",
+      "name": "Menu / Keyboard shortcuts",
+      "to": "shortcuts",
+      "action": "openOverlay",
+      "id": "int:quuu8k90x"
+    },
+    {
+      "source": "1:5pq31vqsn",
+      "name": "Menu / About VMPX",
+      "to": "about",
+      "action": "openOverlay",
+      "id": "int:i47qx391a"
+    },
+    {
+      "source": "1:s7p9ma922",
+      "name": "Attach / Incompatible row",
+      "to": "attach-incompatible",
+      "action": "openOverlay",
+      "id": "int:2pwddz92l"
+    }
+  ],
+  "colors": {
+    "white": "#FFFFFF",
+    "canvas": "#F7F8FA",
+    "chrome": "#ECEEF0",
+    "panel": "#F4F5F7",
+    "border": "#CDD2D7",
+    "rule": "#E4E7EA",
+    "ink": "#20262D",
+    "muted": "#67717D",
+    "disabled": "#A0A7AF",
+    "accent": "#435F78",
+    "selected": "#E5EDF4",
+    "selectedInk": "#263F55",
+    "mono": "#303B46"
+  },
+  "toggleCount": 17,
+  "limitations": [
+    "Design prototype only; process backend is not wired.",
+    "Live values and successful completion states are design samples.",
+    "Recorded restore/runtime failure remains in reconstruction result."
+  ],
+  "modalStates": {
+    "attach": {
+      "id": "1:d7mc5pgcu",
+      "origin": "overview",
+      "dialogId": "1:ywrcwe60y"
+    },
+    "rebuild": {
+      "id": "1:vu2m8vggw",
+      "origin": "memory",
+      "dialogId": "1:zw4k7w627"
+    },
+    "open": {
+      "id": "1:d4cbu1gir",
+      "origin": "empty",
+      "dialogId": "1:odpvppqmh"
+    },
+    "launch": {
+      "id": "1:e3ofncgl0",
+      "origin": "overview",
+      "dialogId": "1:y8im8xqms"
+    },
+    "inject": {
+      "id": "1:g5blpvgmp",
+      "origin": "modules",
+      "dialogId": "1:fcgybgqmz"
+    },
+    "dump": {
+      "id": "1:itpdj0gp3",
+      "origin": "memory",
+      "dialogId": "1:n45wj9qn6"
+    },
+    "snapshot": {
+      "id": "1:fv0kabgv8",
+      "origin": "memory",
+      "dialogId": "1:sh3mfnqnc"
+    },
+    "oep": {
+      "id": "1:fam7y5h0k",
+      "origin": "memory",
+      "dialogId": "1:pkorh5qnk"
+    },
+    "write": {
+      "id": "1:5cde4jh74",
+      "origin": "hex",
+      "dialogId": "1:w5h79aqno"
+    },
+    "write-result": {
+      "id": "1:m7fvpahde",
+      "origin": "hex",
+      "dialogId": "1:tqmlnmqny"
+    },
+    "watch-options": {
+      "id": "1:jv1li9hj9",
+      "origin": "memory",
+      "dialogId": "1:698cesqo5"
+    },
+    "run": {
+      "id": "1:6nt7v9hoj",
+      "origin": "artifacts",
+      "dialogId": "1:bj23hiqoj"
+    },
+    "analysis-options": {
+      "id": "1:skjr8ehrs",
+      "origin": "analysis",
+      "dialogId": "1:a3c0ntqop"
+    },
+    "import-options": {
+      "id": "1:ozja0si51",
+      "origin": "imports",
+      "dialogId": "1:91nn7dqow"
+    },
+    "settings": {
+      "id": "1:k9gvjxiav",
+      "origin": "overview",
+      "dialogId": "1:a208y5qp4"
+    },
+    "error": {
+      "id": "1:gque1fiie",
+      "origin": "memory",
+      "dialogId": "1:mekoc6qpb"
+    },
+    "attach-incompatible": {
+      "id": "1:hoqyo0ira",
+      "origin": "overview",
+      "dialogId": "1:k1ezzsqpo"
+    },
+    "cancel-task": {
+      "id": "1:tupqhiiz9",
+      "origin": "busy",
+      "dialogId": "1:fwzba2qpv"
+    },
+    "clear-log": {
+      "id": "1:lhwwkxj89",
+      "origin": "log",
+      "dialogId": "1:bwlab8qq2"
+    },
+    "export": {
+      "id": "1:gi0hveji7",
+      "origin": "log",
+      "dialogId": "1:5hzxxxqq8"
+    },
+    "export-result": {
+      "id": "1:1bjiqljq2",
+      "origin": "log",
+      "dialogId": "1:7b0wziqqg"
+    },
+    "browse": {
+      "id": "1:ektyu4jzo",
+      "origin": "overview",
+      "dialogId": "1:bfbyt9qqn"
+    },
+    "about": {
+      "id": "1:7u64mhk42",
+      "origin": "overview",
+      "dialogId": "1:rk8c2hqqv"
+    },
+    "shortcuts": {
+      "id": "1:qxaj11ki6",
+      "origin": "overview",
+      "dialogId": "1:jbgyo1qr2"
+    },
+    "filter": {
+      "id": "1:qjed44kpb",
+      "origin": "memory",
+      "dialogId": "1:26s33nqrc"
+    },
+    "memory-options": {
+      "id": "1:yheh89kzc",
+      "origin": "memory",
+      "dialogId": "1:3yf57aqrj"
+    },
+    "file-menu": {
+      "id": "1:tjkvlwl91",
+      "origin": "overview",
+      "dialogId": "1:dxnnpsqrr"
+    },
+    "edit-menu": {
+      "id": "1:norqbklf7",
+      "origin": "hex",
+      "dialogId": "1:rtzk4fqrw"
+    },
+    "view-menu": {
+      "id": "1:7x3srlltm",
+      "origin": "overview",
+      "dialogId": "1:k7y7wwqs0"
+    },
+    "capture-menu": {
+      "id": "1:p9l67um30",
+      "origin": "memory",
+      "dialogId": "1:4qy4t0qs7"
+    },
+    "tools-menu": {
+      "id": "1:3ck2rxmcq",
+      "origin": "memory",
+      "dialogId": "1:ei3mfgqse"
+    },
+    "help-menu": {
+      "id": "1:f5a71amgz",
+      "origin": "overview",
+      "dialogId": "1:0m6ibpqsn"
+    }
+  },
+  "prototypeInteractionCount": 962,
+  "inputExamples": [
+    {
+      "name": "Inputs / Original executable",
+      "modes": [
+        {
+          "id": "vmpx-input-1:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-1-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Image capture",
+      "modes": [
+        {
+          "id": "vmpx-input-2:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-2-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Output image",
+      "modes": [
+        {
+          "id": "vmpx-input-3:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-3-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Rebuild base",
+      "modes": [
+        {
+          "id": "vmpx-input-4:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-4-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Rebuild entry",
+      "modes": [
+        {
+          "id": "vmpx-input-5:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-5-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Address",
+      "modes": [
+        {
+          "id": "vmpx-input-6:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-6-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Read size",
+      "modes": [
+        {
+          "id": "vmpx-input-7:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-7-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Executable",
+      "modes": [
+        {
+          "id": "vmpx-input-8:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-8-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Launch executable",
+      "modes": [
+        {
+          "id": "vmpx-input-9:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-9-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Launch wait",
+      "modes": [
+        {
+          "id": "vmpx-input-10:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-10-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Agent DLL",
+      "modes": [
+        {
+          "id": "vmpx-input-11:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-11-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Dump output",
+      "modes": [
+        {
+          "id": "vmpx-input-12:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-12-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Max MB",
+      "modes": [
+        {
+          "id": "vmpx-input-13:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-13-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Snapshot output",
+      "modes": [
+        {
+          "id": "vmpx-input-14:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-14-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Snapshot lower",
+      "modes": [
+        {
+          "id": "vmpx-input-15:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-15-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / OEP output",
+      "modes": [
+        {
+          "id": "vmpx-input-16:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-16-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / OEP wait",
+      "modes": [
+        {
+          "id": "vmpx-input-17:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-17-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Write address",
+      "modes": [
+        {
+          "id": "vmpx-input-18:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-18-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Write bytes",
+      "modes": [
+        {
+          "id": "vmpx-input-19:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-19-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Watch address",
+      "modes": [
+        {
+          "id": "vmpx-input-20:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-20-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Watch size",
+      "modes": [
+        {
+          "id": "vmpx-input-21:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-21-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Watch duration",
+      "modes": [
+        {
+          "id": "vmpx-input-22:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-22-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Watch output",
+      "modes": [
+        {
+          "id": "vmpx-input-23:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-23-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Watch capture",
+      "modes": [
+        {
+          "id": "vmpx-input-24:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-24-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Run exe",
+      "modes": [
+        {
+          "id": "vmpx-input-25:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-25-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Run snapshot",
+      "modes": [
+        {
+          "id": "vmpx-input-26:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-26-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Analysis live",
+      "modes": [
+        {
+          "id": "vmpx-input-27:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-27-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Analysis original",
+      "modes": [
+        {
+          "id": "vmpx-input-28:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-28-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Analysis output",
+      "modes": [
+        {
+          "id": "vmpx-input-29:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-29-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Import limit",
+      "modes": [
+        {
+          "id": "vmpx-input-30:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-30-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Settings output",
+      "modes": [
+        {
+          "id": "vmpx-input-31:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-31-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Settings max",
+      "modes": [
+        {
+          "id": "vmpx-input-32:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-32-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Export file",
+      "modes": [
+        {
+          "id": "vmpx-input-33:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-33-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Browse path",
+      "modes": [
+        {
+          "id": "vmpx-input-34:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-34-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Filter expression",
+      "modes": [
+        {
+          "id": "vmpx-input-35:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-35-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Near",
+      "modes": [
+        {
+          "id": "vmpx-input-36:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-36-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Radius",
+      "modes": [
+        {
+          "id": "vmpx-input-37:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-37-edited",
+          "name": "Edited example"
+        }
+      ]
+    },
+    {
+      "name": "Inputs / Minimum KB",
+      "modes": [
+        {
+          "id": "vmpx-input-38:default",
+          "name": "Mode 1"
+        },
+        {
+          "id": "vmpx-input-38-edited",
+          "name": "Edited example"
+        }
+      ]
+    }
+  ],
+  "rowSelectionInteractions": 13
+}
