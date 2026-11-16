@@ -60,6 +60,7 @@ loss.jsonl
 
 # Documentation, design, and test material
 *.md
+!/README.md
 *.ps1
 *.ps
 /vmpx/design/

@@ -45,7 +45,7 @@ rem --- single-file host: agent payload + version info ---
 rc /nologo /fo resources.res resources.rc
 if errorlevel 1 exit /b 1
 
-cl /nologo /std:c11 /W4 /O2 /I include /I src /Fe:vmpx.exe ^
+cl /nologo /std:c11 /W4 /O2 /MT /I include /I src /Fe:vmpx.exe ^
     src\main.c ^
     src\util\args.c src\util\bin.c src\util\str.c src\util\file.c src\util\log.c ^
     src\util\agent_embed.c ^
