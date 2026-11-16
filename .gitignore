@@ -58,6 +58,14 @@ _deobf_*/
 *.jsonl
 loss.jsonl
 
+# Documentation, design, and test material
+*.md
+*.ps1
+*.ps
+/vmpx/design/
+/vmpx/docs/
+/vmpx/tests/
+
 # Editor and OS metadata
 .vs/
 .vscode/
